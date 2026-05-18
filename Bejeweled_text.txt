@@ -1,0 +1,94 @@
+﻿Bejeweled 2 Puzzle and Solution file explanation
+
+ðŸ’Ž Intro
+This paper aims to explain the way .bpz and .sol files work in Bejeweled 2 so you can make your own! All this is explained using a hex editor.
+
+BPZ Puzzle Explanation
+Letâ€™s take this custom puzzle for example:
+
+This is the bpz file opened with HXD:
+
+
+
+So how does it work?
+
+First we have a header text, or bytes that pretty much say â€œthis is how this file startsâ€. We are gonna be using this every time we make a .bpz file. Keep in mind the value of 0x04 offset. For some reason, a value of 01 will mean that every 07 gem is a rock and 08 is a bomb. If the value is 02, then a gem with value 08 is a bomb and a value of 07 is a rock. I have no idea why this exists in the first place but keep it in mind. 
+
+Then, the gems from the top left corner start. Each byte represents one gem, starting from the first line until the very last one. Depending on what gem we have, it might be stored in more than one bytes.
+An empty gem (FF) is stored in only one byte. 
+A normal gem is stored in 2 bytes. The first byte is the skin color and the second byte represents if itâ€™s powered (01) or not (00). The skin colors are shown in the picture starting from 00 until 09. 
+Lastly, a gem with skin value of 07 is a bomb and takes 3 bytes instead of 2. The reason for that is that we need to know the value of the bomb on the third byte (in the image, that value is 09, so the bomb will have the value 9).
+
+
+
+SOL Puzzle Explanation
+A .sol file is used to determine the hints and all possible solutions in a step-by-step way on how to solve said puzzle.
+Reading and understanding a .sol file
+Here is the hex-editor look of â€œ26. Green right.solâ€ which connects to the puzzle in Centauri - 3 of the base gameâ€™s â€œGalaxy Oneâ€
+
+
+Since this example goes one way, itâ€™s relatively simple to point on where the solution goes to and how to solve it
+
+Below is a detailed view of how a .sol file is read ingame
+
+
+
+And how a hint is stored listed in detail here
+
+
+If the number of possible hints in a state is more than 01, add an additional 4 bytes for however many times the number is (02: add 4 bytes, 03: add 8 bytes, etc.)
+Some hint arrow positions may crash the game due to an overflow error with no crash window or report.
+If a specific move is made, the game will read as that solution was taken and will show the next hints at that state.
+The last 2 bytes you do not change, doing so will crash the game.
+All the arrow position values are listed below, values not listed would crash the game
+
+HORIZONTAL TO THE LEFT
+
+
+
+VERTICAL UPWARD
+
+It is also worth noting that if the hint doesnâ€™t have a gem at itâ€™s origin, it fires an â€œaccess violationâ€ crash exception (An updated value table will be added soon)
+
+
+This is an example .sol file created off of a pre-existing .sol file, shortened to use one hint only
+
+
+This is how it would look ingame, alongside an example puzzle
+
+
+
+Once the move is made, clicking hint again will show â€œNo Hintsâ€ despite it normally saying â€œNo Longer Solvableâ€ in base game puzzles
+
+
+I am not sure why it shows â€œno hintsâ€ when the puzzle is no longer solvable, it may have to do with the header of the file
+
+If we add some more bytes as if they were extra states, they would appear to solve the puzzle more or completely. Referring to the details on how a hint is registered, we would add 10 more bytes to complete the .sol file for the above example puzzle. This is our file now with the starting point at the end of the hex values:
+
+The starting point can be anywhere as long as it follows to a closing point that leads to state 0.
+
+Letâ€™s take a look at how it looks ingame now
+
+That looks good and it shows exactly what we have to do to solve the demo puzzle!
+
+
+Two-way solutions (and everything that contains more than one solution)
+Some hints are two-ways (puzzles having more than one solution) and the user could follow one or the other to solve the puzzle, or follow both on certain occasions.
+
+This .sol file contains one state with two hints, allowing us to start from one way or another in the puzzle
+
+If we want our hints to follow to all our solutions, we add extra states that the two hints could point to when their match is made
+
+
+
+Taking all these into account will make up a complex .sol file that could possibly read all solutions. Here is a manual creation of a .sol file for Finity Galaxyâ€™s Centauri - 1 puzzle
+
+
+
+
+As there are many solutions to this puzzle, click around to find all possible moves if you want.
+
+You can have as many hints in a single state as you like, but be aware:
+Due to the byte integer limit being 255, you can have up to 255 hints in a single state, but it doesnâ€™t stop anyone from going over the top with hints in a single state
+
+

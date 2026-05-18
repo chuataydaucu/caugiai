@@ -360,8 +360,6 @@ bool exportSOLFile(const std::string& filename, const std::vector<Move>& solutio
     std::cout << "[SUCCESS] Da dong goi va xuat file loi giai nhan phan thanh cong!" << std::endl;
     return true;
 }
-#include <filesystem> // <-- Thư viện này giúp C++ tự lục tìm file trong máy tính
-
 int main() {
     std::cout << "===============================================================" << std::endl;
     std::cout << "   HE THONG GIAI TU DONG BEJEWELED 2 PUZZLE   " << std::endl;

@@ -11,6 +11,12 @@ inline uint32_t getOfficialPuzzleID(const std::string& filename) {
     std::string lower = filename;
     std::transform(lower.begin(), lower.end(), lower.begin(), [](unsigned char c){ return std::tolower(c); });
 
+    size_t dotPos = lower.find('.');
+    std::string prefix = "";
+    if (dotPos != std::string::npos) {
+        prefix = lower.substr(0, dotPos + 1); // e.g. "3."
+    }
+
     static const std::unordered_map<std::string, uint32_t> puzzleMap = {
         {"1. pairs.bpz", 0x845EC60FU},
         {"10. power transfer.bpz", 0x38A3463EU},
@@ -23,7 +29,7 @@ inline uint32_t getOfficialPuzzleID(const std::string& filename) {
         {"17. buttress.bpz", 0x745D2FB8U},
         {"18. pillar.bpz", 0xE737E851U},
         {"19. red herring.bpz", 0xB57E714CU},
-        {"2. above and below.bpz", 0x0U},
+        {"2. above and below.bpz", 0xC146678AU},
         {"20. gathering stones.bpz", 0x49AD9F76U},
         {"21. 5x5 checkerboard minus one.bpz", 0xA9776F36U},
         {"22. 5x5 212 checker.bpz", 0x16F0AE0U},
@@ -56,7 +62,7 @@ inline uint32_t getOfficialPuzzleID(const std::string& filename) {
         {"47. short fuse.bpz", 0xD0FCAB9BU},
         {"48. long fuse.bpz", 0xE820670DU},
         {"49. leftovers.bpz", 0xDEF0302CU},
-        {"5. test1.bpz", 0x19050000U},
+        {"5. test1.bpz", 0xCB903049U},
         {"50. patience.bpz", 0x5CC01EA2U},
         {"51. rock checker house.bpz", 0xB7323F62U},
         {"52. rock checker tall house.bpz", 0xA5C9331DU},
@@ -96,6 +102,13 @@ inline uint32_t getOfficialPuzzleID(const std::string& filename) {
     auto it = puzzleMap.find(lower);
     if (it != puzzleMap.end()) {
         return it->second;
+    }
+    if (!prefix.empty()) {
+        for (const auto& pair : puzzleMap) {
+            if (pair.first.substr(0, prefix.size()) == prefix) {
+                return pair.second;
+            }
+        }
     }
     return 0x00000000U; // Default for custom levels
 }

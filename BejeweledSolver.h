@@ -47,7 +47,7 @@ void printBoard(const BejeweledBoard& board);
 bool isValidSwap(BejeweledBoard& board, int r1, int c1, int r2, int c2);
 bool checkMatchesExist(const BejeweledBoard& board);
 void executeMatch(BejeweledBoard& board);
-void applyGravity(BejeweledBoard& board);
+bool applyGravity(BejeweledBoard& board);
 
 // Hàm kiểm tra điều kiện chiến thắng sạch bảng
 bool isBoardCleared(const BejeweledBoard& board);

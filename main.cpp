@@ -181,23 +181,30 @@ bool isValidSwap(BejeweledBoard& board, int r1, int c1, int r2, int c2) {
     // Chỉ được tráo đổi ô kề cạnh (ngang hoặc dọc)
     if (abs(r1 - r2) + abs(c1 - c2) != 1) return false;
 
+    const Gem& g1 = board.matrix[r1][c1];
+    const Gem& g2 = board.matrix[r2][c2];
+
     // Không thể hoán đổi hai ô trống (EMPTY)
-    if (board.matrix[r1][c1].type == EMPTY && board.matrix[r2][c2].type == EMPTY) return false;
+    if (g1.type == EMPTY && g2.type == EMPTY) return false;
+
+    // Hoán đổi hai ô giống hệt nhau không tạo ra thay đổi nào
+    if (g1.type == g2.type && g1.skin == g2.skin && g1.isPowered == g2.isPowered && g1.bombCounter == g2.bombCounter) {
+        return false;
+    }
 
     // Trường hợp hoán đổi có ô EMPTY (trượt ngọc)
-    if (board.matrix[r1][c1].type == EMPTY || board.matrix[r2][c2].type == EMPTY) {
-        // Xác định ô nào là ngọc, ô nào là trống
-        int gemR = (board.matrix[r1][c1].type != EMPTY) ? r1 : r2;
-        int gemC = (board.matrix[r1][c1].type != EMPTY) ? c1 : c2;
-        int emptyR = (board.matrix[r1][c1].type == EMPTY) ? r1 : r2;
-        int emptyC = (board.matrix[r1][c1].type == EMPTY) ? c1 : c2;
+    if (g1.type == EMPTY || g2.type == EMPTY) {
+        int gemR = (g1.type != EMPTY) ? r1 : r2;
+        int gemC = (g1.type != EMPTY) ? c1 : c2;
+        int emptyR = (g1.type == EMPTY) ? r1 : r2;
+        int emptyC = (g1.type == EMPTY) ? c1 : c2;
 
         // Đá không thể trượt thủ công vào ô trống
         if (board.matrix[gemR][gemC].type == ROCK) {
             return false;
         }
 
-        // Hypercube không thể trượt vào ô trống để nổ (vì không có màu để kích hoạt)
+        // Hypercube không thể trượt vào ô trống để nổ
         if (board.matrix[gemR][gemC].type == NORMAL && board.matrix[gemR][gemC].isPowered == 0x02) {
             return false;
         }
@@ -206,17 +213,15 @@ bool isValidSwap(BejeweledBoard& board, int r1, int c1, int r2, int c2) {
             return true;
         }
 
-        // Trượt ngọc vào ô trống tạm thời
         std::swap(board.matrix[gemR][gemC], board.matrix[emptyR][emptyC]);
         bool valid = isMatchAt(board, emptyR, emptyC);
         std::swap(board.matrix[gemR][gemC], board.matrix[emptyR][emptyC]);
         return valid;
     }
 
-
     // Nếu một trong hai viên là Hypercube (isPowered == 0x02)
-    bool isHC1 = (board.matrix[r1][c1].type == NORMAL && board.matrix[r1][c1].isPowered == 0x02);
-    bool isHC2 = (board.matrix[r2][c2].type == NORMAL && board.matrix[r2][c2].isPowered == 0x02);
+    bool isHC1 = (g1.type == NORMAL && g1.isPowered == 0x02);
+    bool isHC2 = (g2.type == NORMAL && g2.isPowered == 0x02);
     if (isHC1 || isHC2) {
         return true;
     }
@@ -224,14 +229,11 @@ bool isValidSwap(BejeweledBoard& board, int r1, int c1, int r2, int c2) {
     // Thử tráo đổi tạm thời
     std::swap(board.matrix[r1][c1], board.matrix[r2][c2]);
 
-    // Kiểm tra xem sau khi tráo, các ô có tạo ra tổ hợp nổ không
     bool valid = false;
     if (isMatchAt(board, r1, c1)) valid = true;
     if (isMatchAt(board, r2, c2)) valid = true;
 
-    // Tráo ngược trả lại trạng thái cũ
     std::swap(board.matrix[r1][c1], board.matrix[r2][c2]);
-
     return valid;
 }
 
@@ -534,19 +536,21 @@ bool isBoardCleared(const BejeweledBoard& board) {
 } // Bảng sạch bóng 100%
 
 
-// Hàm chuyển đổi ma trận 8x8 thành một chuỗi String duy nhất để làm khóa băm (Hash Key)
+// Hàm chuyển đổi ma trận 8x8 thành một chuỗi nhị phân duy nhất để làm khóa băm (Hash Key)
 std::string serializeBoard(const BejeweledBoard& board) {
-    std::stringstream ss;
+    std::string key;
+    key.resize(8 * 8 * 4);
+    int idx = 0;
     for (int r = 0; r < 8; ++r) {
         for (int c = 0; c < 8; ++c) {
-            // Nối mã loại ô và màu sắc, trạng thái năng lượng, đếm ngược bom
-            ss << (int)board.matrix[r][c].type << "," 
-               << (int)board.matrix[r][c].skin << ","
-               << (int)board.matrix[r][c].isPowered << ","
-               << (int)board.matrix[r][c].bombCounter << "|";
+            const Gem& gem = board.matrix[r][c];
+            key[idx++] = static_cast<char>(gem.type);
+            key[idx++] = static_cast<char>(gem.skin);
+            key[idx++] = static_cast<char>(gem.isPowered);
+            key[idx++] = static_cast<char>(gem.bombCounter);
         }
     }
-    return ss.str();
+    return key;
 }
 
 // 2. Thuật toán Đệ quy kết hợp Quay lui (Backtracking) để giải bài toán
@@ -742,13 +746,17 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
         return true;
     }
 
+    solutionPath.reserve(maxDepth);
+    visitedStates.reserve(200000);
+
     std::string boardKey = serializeBoard(board);
     int currentDepth = static_cast<int>(solutionPath.size());
     if (currentDepth >= maxDepth) {
         return false;
     }
     
-    if (visitedStates.count(boardKey) > 0 && visitedStates[boardKey] <= currentDepth) {
+    auto it = visitedStates.find(boardKey);
+    if (it != visitedStates.end() && it->second <= currentDepth) {
         if (debugSolve) {
             std::cout << "Depth " << currentDepth << ", Path: ";
             for (const auto& m : solutionPath) {
@@ -771,6 +779,7 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
     }
 
     std::vector<CandidateMove> candidates;
+    candidates.reserve(128);
 
     for (int r = 0; r < 8; ++r) {
         for (int c = 0; c < 8; ++c) {
@@ -828,13 +837,23 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
                         }
 
                         // Heuristic: Phá đá trước (x1000), sau đó phá bom (x500), sau cùng là tăng tối đa ô trống
-                        // Đảm bảo tọa độ đầu (r1, c1) luôn luôn chỉ vào một viên ngọc thực tế chứ không chỉ vào ô trống (EMPTY), tránh sập game khi bấm Hint
+                        // Đảm bảo tọa độ đầu (r1, c1) luôn luôn chỉ vào một viên ngọc thực tế (NORMAL hoặc BOMB), chứ không ô trống/đá/v.v., tránh sập game khi bấm Hint
                         Move m;
-                        if (board.matrix[r][c].type == EMPTY) {
+                        
+                        // Xác định ô nào là viên ngọc thực tế (NORMAL hoặc BOMB)
+                        bool isRGemRealGem = (board.matrix[r][c].type == NORMAL || board.matrix[r][c].type == BOMB);
+                        bool isNRGemRealGem = (board.matrix[nr][nc].type == NORMAL || board.matrix[nr][nc].type == BOMB);
+                        
+                        // Luôn đặt viên ngọc thực tế vào vị trí (r1, c1)
+                        if (isRGemRealGem) {
+                            m = {r, c, nr, nc};
+                        } else if (isNRGemRealGem) {
                             m = {nr, nc, r, c};
                         } else {
-                            m = {r, c, nr, nc};
+                            // Cả hai đều không phải viên ngọc thực tế - bỏ qua
+                            continue;
                         }
+                        
                         int priority = rocksDestroyed * 1000 + bombsDestroyed * 500 + emptyCount;
                         candidates.push_back({m, priority});
                     }
@@ -882,25 +901,27 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
 }
 
 bool solvePuzzle(BejeweledBoard& board, std::vector<Move>& solutionPath) {
-    // Đặt deadline: tối đa 45 giây cho mỗi màn
-    g_solveDeadline = std::chrono::steady_clock::now() + std::chrono::seconds(45);
+    // Đặt deadline: tăng lên 120 giây cho mỗi màn để tránh timeout quá sớm trên các bài khó
+    g_solveDeadline = std::chrono::steady_clock::now() + std::chrono::seconds(120);
 
-    // Thử giải bằng IDDFS với strict slides (độ sâu từ 1 đến 15)
+    // Thử giải bằng IDDFS với strict slides (độ sâu từ 1 đến 20)
     allowGeneralSlides = false;
-    for (int limit = 1; limit <= 15; ++limit) {
+    for (int limit = 1; limit <= 20; ++limit) {
         if (std::chrono::steady_clock::now() >= g_solveDeadline) break;
         std::unordered_map<std::string, int> visitedStates;
+        visitedStates.reserve(200000);
         solutionPath.clear();
         if (solvePuzzleOptimized(board, solutionPath, visitedStates, limit)) {
             return true;
         }
     }
 
-    // Nếu không giải được, thử giải bằng IDDFS với general slides (độ sâu từ 1 đến 15)
+    // Nếu không giải được, thử giải bằng IDDFS với general slides (độ sâu từ 1 đến 20)
     allowGeneralSlides = true;
-    for (int limit = 1; limit <= 15; ++limit) {
+    for (int limit = 1; limit <= 20; ++limit) {
         if (std::chrono::steady_clock::now() >= g_solveDeadline) break;
         std::unordered_map<std::string, int> visitedStates;
+        visitedStates.reserve(200000);
         solutionPath.clear();
         if (solvePuzzleOptimized(board, solutionPath, visitedStates, limit)) {
             return true;
@@ -934,7 +955,6 @@ uint32_t calculateFileCRC32(const std::string& filepath) {
     }
     return ~crc;
 }
-
 // HÀM XUẤT FILE LỜI GIẢI NHỊ PHÂN .SOL
 bool exportSOLFile(const std::string& filename, const std::vector<Move>& solutionPath) {
     // Mở file ghi ở chế độ nhị phân (ios::binary)
@@ -943,13 +963,6 @@ bool exportSOLFile(const std::string& filename, const std::vector<Move>& solutio
         std::cerr << "Loi: Khong the tao duoc file output .sol!" << std::endl;
         return false;
     }
-
-    // 1. GHI HEADER: 14 byte đầu tiên
-    // - 4 byte signature: 02 B0 37 13
-    // - 2 byte magic: 02 00
-    // - 4 byte puzzle ID
-    // - 2 byte start state
-    // - 2 byte total states
     uint8_t signature[4] = { 0x02, 0xB0, 0x37, 0x13 };
     file.write(reinterpret_cast<char*>(signature), 4);
 
@@ -988,33 +1001,41 @@ bool exportSOLFile(const std::string& filename, const std::vector<Move>& solutio
     uint8_t stateZeroHints = 0x00;
     file.write(reinterpret_cast<char*>(&stateZeroHints), 1);
 
-    // - Trạng thái j (từ 1 đến N): Mỗi trạng thái có 1 gợi ý dẫn về trạng thái j - 1
-    // Nước đi đầu tiên (Move 0) thuộc về State N (Start State) dẫn tới State N-1
-    // Nước đi cuối cùng (Move N-1) thuộc về State 1 dẫn tới State 0
     for (uint32_t j = 1; j <= numStates; ++j) {
         uint8_t numHints = 0x01;
         file.write(reinterpret_cast<char*>(&numHints), 1);
 
         const Move& currentMove = solutionPath[numStates - j];
+        
+        // VALIDATION: Kiểm tra tọa độ (r1, c1) có hợp lệ không
+        if (currentMove.r1 < 0 || currentMove.r1 >= 8 || currentMove.c1 < 0 || currentMove.c1 >= 8) {
+            std::cerr << "[ERROR] Toa do r1=" << currentMove.r1 << ", c1=" << currentMove.c1 
+                      << " nam ngoai ban co (0-7)! Game se crash khi bam Hint!" << std::endl;
+            file.close();
+            return false;
+        }
+        if (currentMove.r2 < 0 || currentMove.r2 >= 8 || currentMove.c2 < 0 || currentMove.c2 >= 8) {
+            std::cerr << "[ERROR] Toa do r2=" << currentMove.r2 << ", c2=" << currentMove.c2 
+                      << " nam ngoai ban co (0-7)!" << std::endl;
+            file.close();
+            return false;
+        }
 
-        // Tính hướng di chuyển theo định dạng chính thức của Bejeweled 2 Deluxe:
-        // 0x00: Phải (Right)
-        // 0x01: Trên (Up)
-        // 0x02: Trái (Left)
-        // 0x03: Dưới (Down)
         uint8_t direction = 0x00;
-        if (currentMove.c2 > currentMove.c1) {
-            direction = 0x00; // Phải (Right)
+        if (currentMove.c2 < currentMove.c1) {
+            direction = 0x00; // Trái (Left)
         } else if (currentMove.r2 < currentMove.r1) {
             direction = 0x01; // Trên (Up)
-        } else if (currentMove.c2 < currentMove.c1) {
-            direction = 0x02; // Trái (Left)
+        } else if (currentMove.c2 > currentMove.c1) {
+            direction = 0x02; // Phải (Right)
         } else if (currentMove.r2 > currentMove.r1) {
             direction = 0x03; // Dưới (Down)
         }
 
-        // Tọa độ ô cờ: 0-indexed row-major (từ 0 đến 63)
-        uint8_t gemIndex = static_cast<uint8_t>(currentMove.r1 * 8 + currentMove.c1);
+        // Index = r1 * 8 + c1 + 1 (1-based), với giá trị 64 (ô [7][7]) được mã hóa là 0 (do 6-bit max = 63, nên 64 % 64 = 0).
+        uint8_t rawIndex = static_cast<uint8_t>(currentMove.r1 * 8 + currentMove.c1); // 0-based: 0..63
+        // Chuyển sang 1-based bằng cách +1, rồi & 0x3F để giữ trong 6 bit (64 & 63 = 0)
+        uint8_t gemIndex = rawIndex & 0x3F;  // 0-based: game doc truc tiep 0..63
 
         // Byte kết hợp: 2 bit đầu là hướng, 6 bit sau là tọa độ ô cờ
         uint8_t gemIndexAndDirection = (direction << 6) | gemIndex;
@@ -1081,6 +1102,38 @@ int main() {
                     std::cout << "       Buoc " << i + 1 << ": Hoan doi (" << solutionPath[i].r1 << ", " << solutionPath[i].c1 
                               << ") voi (" << solutionPath[i].r2 << ", " << solutionPath[i].c2 << ")" << std::endl;
                 }
+                // === DEBUG: Replay tung buoc de xac nhan board state ===
+                {
+                    BejeweledBoard replayBoard;
+                    loadBPZFile(inputBPZ, replayBoard);
+                    std::cout << "\n=== REPLAY XAC NHAN TUNG BUOC ===" << std::endl;
+                    for (size_t i = 0; i < solutionPath.size(); ++i) {
+                        const Move& mv = solutionPath[i];
+                        std::cout << "\n--- Truoc buoc " << i+1 << ": hoan doi (" << mv.r1 << "," << mv.c1 << ") <-> (" << mv.r2 << "," << mv.c2 << ") ---" << std::endl;
+                        // Kiem tra gem tai (r1,c1) va (r2,c2)
+                        auto& g1 = replayBoard.matrix[mv.r1][mv.c1];
+                        auto& g2 = replayBoard.matrix[mv.r2][mv.c2];
+                        std::cout << "  Gem tai (" << mv.r1 << "," << mv.c1 << "): type=" << (int)g1.type << " skin=" << (int)g1.skin << std::endl;
+                        std::cout << "  Gem tai (" << mv.r2 << "," << mv.c2 << "): type=" << (int)g2.type << " skin=" << (int)g2.skin << std::endl;
+                        
+                        bool isHC1 = (g1.type == NORMAL && g1.isPowered == 0x02);
+                        bool isHC2 = (g2.type == NORMAL && g2.isPowered == 0x02);
+                        std::swap(replayBoard.matrix[mv.r1][mv.c1], replayBoard.matrix[mv.r2][mv.c2]);
+                        if (isHC1) {
+                            triggerHypercube(replayBoard, mv.r2, mv.c2, mv.r1, mv.c1);
+                        } else if (isHC2) {
+                            triggerHypercube(replayBoard, mv.r1, mv.c1, mv.r2, mv.c2);
+                        } else {
+                            executeMatchAndExplosions(replayBoard, mv.r1, mv.c1, mv.r2, mv.c2);
+                            applyGravity(replayBoard);
+                            resolveBoardStates(replayBoard);
+                        }
+                        tickBombs(replayBoard);
+                        printBoard(replayBoard);
+                    }
+                    std::cout << "=== KET THUC REPLAY ===" << std::endl;
+                }
+                // === END DEBUG ===
                 exportSOLFile(outputSOL, solutionPath);
                 successCount++;
             } else {

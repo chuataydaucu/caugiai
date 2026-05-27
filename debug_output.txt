@@ -1,0 +1,1258 @@
+﻿===============================================================
+   HE THONG GIAI TU DONG BEJEWELED 2 PUZZLE   
+===============================================================
+
+[+] Dang xu ly file thu 1: puzzle_001.bpz...
+Doc file .bpz thanh cong! modeOffset04 = 1
+Initial board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM6] [GEM6] [GEM0] [EMPTY] [GEM3] [EMPTY] [GEM3] [GEM3] 
+[GEM0] [GEM0] [GEM6] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM3] [GEM5] [GEM5] [GEM0] [GEM0] [GEM4] [GEM4] [GEM2] 
+[GEM3] [GEM0] [GEM0] [GEM5] [EMPTY] [GEM2] [GEM2] [GEM4] 
+[EMPTY] [GEM5] [GEM1] [GEM1] [GEM0] [GEM4] [GEM0] [GEM4] 
+[GEM3] [GEM1] [GEM5] [GEM5] [GEM0] [GEM0] [GEM4] [GEM0] 
+=============================
+Board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM6] [GEM6] [GEM0] [EMPTY] [GEM3] [EMPTY] [GEM3] [GEM3] 
+[GEM0] [GEM0] [GEM6] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM3] [GEM5] [GEM5] [GEM0] [GEM0] [GEM4] [GEM4] [GEM2] 
+[GEM3] [GEM0] [GEM0] [GEM5] [EMPTY] [GEM2] [GEM2] [GEM4] 
+[EMPTY] [GEM5] [GEM1] [GEM1] [GEM0] [GEM4] [GEM0] [GEM4] 
+[GEM3] [GEM1] [GEM5] [GEM5] [GEM0] [GEM0] [GEM4] [GEM0] 
+=============================
+    => [SUCCESS] Tim thay loi giai sau 5 buoc!
+       Buoc 1: Hoan doi (6, 1) voi (7, 1)
+       Buoc 2: Hoan doi (4, 7) voi (5, 7)
+       Buoc 3: Hoan doi (6, 1) voi (7, 1)
+       Buoc 4: Hoan doi (6, 6) voi (7, 6)
+       Buoc 5: Hoan doi (7, 4) voi (7, 5)
+Doc file .bpz thanh cong! modeOffset04 = 1
+
+=== REPLAY XAC NHAN TUNG BUOC ===
+
+--- Truoc buoc 1: hoan doi (6,1) <-> (7,1) ---
+  Gem tai (6,1): type=1 skin=5
+  Gem tai (7,1): type=1 skin=1
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] [GEM3] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM4] [GEM4] [GEM2] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM2] [GEM2] [GEM4] 
+[EMPTY] [GEM6] [GEM0] [EMPTY] [EMPTY] [GEM4] [GEM0] [GEM4] 
+[GEM6] [GEM0] [GEM6] [GEM0] [GEM3] [GEM0] [GEM4] [GEM0] 
+=============================
+
+--- Truoc buoc 2: hoan doi (4,7) <-> (5,7) ---
+  Gem tai (4,7): type=1 skin=2
+  Gem tai (5,7): type=1 skin=4
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] [GEM3] 
+[EMPTY] [GEM6] [GEM0] [EMPTY] [EMPTY] [GEM4] [GEM0] [GEM4] 
+[GEM6] [GEM0] [GEM6] [GEM0] [GEM3] [GEM0] [GEM4] [GEM0] 
+=============================
+
+--- Truoc buoc 3: hoan doi (6,1) <-> (7,1) ---
+  Gem tai (6,1): type=1 skin=6
+  Gem tai (7,1): type=1 skin=0
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] [GEM3] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM4] [GEM0] [GEM4] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] [GEM0] [GEM4] [GEM0] 
+=============================
+
+--- Truoc buoc 4: hoan doi (6,6) <-> (7,6) ---
+  Gem tai (6,6): type=1 skin=0
+  Gem tai (7,6): type=1 skin=4
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] [EMPTY] [GEM3] [GEM3] 
+=============================
+
+--- Truoc buoc 5: hoan doi (7,4) <-> (7,5) ---
+  Gem tai (7,4): type=1 skin=3
+  Gem tai (7,5): type=0 skin=255
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+=== KET THUC REPLAY ===
+[SUCCESS] Da dong goi va xuat file loi giai nhan phan thanh cong!
+
+[+] Dang xu ly file thu 2: puzzle_002.bpz...
+Doc file .bpz thanh cong! modeOffset04 = 1
+Initial board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM2] [GEM6] [GEM2] [EMPTY] [GEM6] [GEM1] [GEM6] [EMPTY] 
+[GEM6] [GEM2] [GEM6] [EMPTY] [GEM1] [GEM6] [GEM1] [EMPTY] 
+[GEM4] [GEM4] [GEM6] [EMPTY] [EMPTY] [GEM6] [GEM6] [GEM5] 
+[GEM6] [GEM6] [GEM4] [EMPTY] [EMPTY] [GEM5] [GEM5] [GEM6] 
+[EMPTY] [GEM4] [GEM5] [GEM5] [GEM1] [GEM1] [GEM3] [EMPTY] 
+[EMPTY] [GEM5] [GEM4] [GEM4] [GEM3] [GEM3] [GEM1] [EMPTY] 
+=============================
+Board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM2] [GEM6] [GEM2] [EMPTY] [GEM6] [GEM1] [GEM6] [EMPTY] 
+[GEM6] [GEM2] [GEM6] [EMPTY] [GEM1] [GEM6] [GEM1] [EMPTY] 
+[GEM4] [GEM4] [GEM6] [EMPTY] [EMPTY] [GEM6] [GEM6] [GEM5] 
+[GEM6] [GEM6] [GEM4] [EMPTY] [EMPTY] [GEM5] [GEM5] [GEM6] 
+[EMPTY] [GEM4] [GEM5] [GEM5] [GEM1] [GEM1] [GEM3] [EMPTY] 
+[EMPTY] [GEM5] [GEM4] [GEM4] [GEM3] [GEM3] [GEM1] [EMPTY] 
+=============================
+    => [SUCCESS] Tim thay loi giai sau 6 buoc!
+       Buoc 1: Hoan doi (2, 1) voi (3, 1)
+       Buoc 2: Hoan doi (6, 1) voi (7, 1)
+       Buoc 3: Hoan doi (6, 2) voi (7, 2)
+       Buoc 4: Hoan doi (6, 6) voi (7, 6)
+       Buoc 5: Hoan doi (6, 7) voi (7, 7)
+       Buoc 6: Hoan doi (6, 5) voi (7, 5)
+Doc file .bpz thanh cong! modeOffset04 = 1
+
+=== REPLAY XAC NHAN TUNG BUOC ===
+
+--- Truoc buoc 1: hoan doi (2,1) <-> (3,1) ---
+  Gem tai (2,1): type=1 skin=6
+  Gem tai (3,1): type=1 skin=2
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM6] [EMPTY] 
+[EMPTY] [GEM4] [GEM6] [EMPTY] [EMPTY] [GEM6] [GEM1] [EMPTY] 
+[EMPTY] [GEM6] [GEM4] [EMPTY] [GEM1] [GEM5] [GEM5] [EMPTY] 
+[GEM4] [GEM4] [GEM5] [GEM5] [GEM1] [GEM1] [GEM3] [GEM5] 
+[GEM6] [GEM5] [GEM4] [GEM4] [GEM3] [GEM3] [GEM1] [GEM6] 
+=============================
+
+--- Truoc buoc 2: hoan doi (6,1) <-> (7,1) ---
+  Gem tai (6,1): type=1 skin=4
+  Gem tai (7,1): type=1 skin=5
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM6] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM1] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM5] [GEM5] [EMPTY] 
+[GEM4] [GEM4] [GEM6] [EMPTY] [GEM1] [GEM1] [GEM3] [GEM5] 
+[GEM6] [GEM6] [GEM4] [EMPTY] [GEM3] [GEM3] [GEM1] [GEM6] 
+=============================
+
+--- Truoc buoc 3: hoan doi (6,2) <-> (7,2) ---
+  Gem tai (6,2): type=1 skin=6
+  Gem tai (7,2): type=1 skin=4
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM6] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM1] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM5] [GEM5] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM1] [GEM3] [GEM5] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] [GEM3] [GEM1] [GEM6] 
+=============================
+
+--- Truoc buoc 4: hoan doi (6,6) <-> (7,6) ---
+  Gem tai (6,6): type=1 skin=3
+  Gem tai (7,6): type=1 skin=1
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM6] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM1] [GEM5] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM5] [GEM5] [GEM6] 
+=============================
+
+--- Truoc buoc 5: hoan doi (6,7) <-> (7,7) ---
+  Gem tai (6,7): type=1 skin=5
+  Gem tai (7,7): type=1 skin=6
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM6] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM6] [GEM1] [GEM6] 
+=============================
+
+--- Truoc buoc 6: hoan doi (6,5) <-> (7,5) ---
+  Gem tai (6,5): type=1 skin=1
+  Gem tai (7,5): type=1 skin=6
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+=== KET THUC REPLAY ===
+[SUCCESS] Da dong goi va xuat file loi giai nhan phan thanh cong!
+
+[+] Dang xu ly file thu 3: puzzle_003.bpz...
+Doc file .bpz thanh cong! modeOffset04 = 1
+Initial board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM0] [GEM4] [GEM0] [EMPTY] [GEM0] [GEM3] [GEM3] [EMPTY] 
+[GEM4] [GEM0] [GEM4] [EMPTY] [GEM3] [GEM0] [GEM0] [EMPTY] 
+[GEM2] [GEM5] [GEM5] [EMPTY] [GEM5] [GEM3] [GEM1] [GEM3] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM3] [GEM1] 
+[GEM2] [GEM1] [GEM0] [GEM1] [EMPTY] [GEM3] [GEM3] [GEM4] 
+[GEM2] [GEM0] [GEM1] [GEM0] [EMPTY] [GEM4] [GEM4] [GEM3] 
+=============================
+Board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM0] [GEM4] [GEM0] [EMPTY] [GEM0] [GEM3] [GEM3] [EMPTY] 
+[GEM4] [GEM0] [GEM4] [EMPTY] [GEM3] [GEM0] [GEM0] [EMPTY] 
+[GEM2] [GEM5] [GEM5] [EMPTY] [GEM5] [GEM3] [GEM1] [GEM3] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM3] [GEM1] 
+[GEM2] [GEM1] [GEM0] [GEM1] [EMPTY] [GEM3] [GEM3] [GEM4] 
+[GEM2] [GEM0] [GEM1] [GEM0] [EMPTY] [GEM4] [GEM4] [GEM3] 
+=============================
+    => [SUCCESS] Tim thay loi giai sau 5 buoc!
+       Buoc 1: Hoan doi (4, 6) voi (5, 6)
+       Buoc 2: Hoan doi (6, 2) voi (7, 2)
+       Buoc 3: Hoan doi (6, 7) voi (7, 7)
+       Buoc 4: Hoan doi (5, 2) voi (6, 2)
+       Buoc 5: Hoan doi (7, 4) voi (7, 3)
+Doc file .bpz thanh cong! modeOffset04 = 1
+
+=== REPLAY XAC NHAN TUNG BUOC ===
+
+--- Truoc buoc 1: hoan doi (4,6) <-> (5,6) ---
+  Gem tai (4,6): type=1 skin=1
+  Gem tai (5,6): type=1 skin=3
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM4] [GEM0] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM0] [GEM4] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM5] [GEM5] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM0] [GEM1] [GEM0] [GEM1] [EMPTY] [GEM3] [GEM3] [GEM4] 
+[GEM4] [GEM0] [GEM1] [GEM0] [GEM5] [GEM4] [GEM4] [GEM3] 
+=============================
+
+--- Truoc buoc 2: hoan doi (6,2) <-> (7,2) ---
+  Gem tai (6,2): type=1 skin=0
+  Gem tai (7,2): type=1 skin=1
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM4] [GEM0] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM0] [GEM0] [GEM4] [EMPTY] [EMPTY] [GEM3] [GEM3] [GEM4] 
+[GEM4] [GEM5] [GEM5] [EMPTY] [GEM5] [GEM4] [GEM4] [GEM3] 
+=============================
+
+--- Truoc buoc 3: hoan doi (6,7) <-> (7,7) ---
+  Gem tai (6,7): type=1 skin=4
+  Gem tai (7,7): type=1 skin=3
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM4] [GEM0] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM0] [GEM0] [GEM4] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM4] [GEM5] [GEM5] [EMPTY] [GEM5] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+
+--- Truoc buoc 4: hoan doi (5,2) <-> (6,2) ---
+  Gem tai (5,2): type=1 skin=0
+  Gem tai (6,2): type=1 skin=4
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM4] [GEM4] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM4] [GEM5] [GEM5] [EMPTY] [GEM5] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+
+--- Truoc buoc 5: hoan doi (7,4) <-> (7,3) ---
+  Gem tai (7,4): type=1 skin=5
+  Gem tai (7,3): type=0 skin=255
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+=== KET THUC REPLAY ===
+[SUCCESS] Da dong goi va xuat file loi giai nhan phan thanh cong!
+
+[+] Dang xu ly file thu 4: puzzle_004.bpz...
+Doc file .bpz thanh cong! modeOffset04 = 1
+Initial board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM0] [GEM0] [GEM5] [GEM3] [EMPTY] [GEM6] [GEM5] [GEM5] 
+[GEM5] [GEM5] [GEM0] [GEM3] [EMPTY] [GEM5] [GEM6] [GEM6] 
+[GEM2] [GEM6] [GEM2] [EMPTY] [GEM0] [GEM0] [GEM1] [EMPTY] 
+[GEM6] [GEM2] [GEM6] [GEM3] [GEM1] [GEM1] [GEM0] [EMPTY] 
+[GEM4] [GEM1] [GEM4] [EMPTY] [EMPTY] [GEM4] [GEM4] [GEM1] 
+[GEM1] [GEM4] [GEM1] [EMPTY] [EMPTY] [GEM1] [GEM1] [GEM4] 
+=============================
+Board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM0] [GEM0] [GEM5] [GEM3] [EMPTY] [GEM6] [GEM5] [GEM5] 
+[GEM5] [GEM5] [GEM0] [GEM3] [EMPTY] [GEM5] [GEM6] [GEM6] 
+[GEM2] [GEM6] [GEM2] [EMPTY] [GEM0] [GEM0] [GEM1] [EMPTY] 
+[GEM6] [GEM2] [GEM6] [GEM3] [GEM1] [GEM1] [GEM0] [EMPTY] 
+[GEM4] [GEM1] [GEM4] [EMPTY] [EMPTY] [GEM4] [GEM4] [GEM1] 
+[GEM1] [GEM4] [GEM1] [EMPTY] [EMPTY] [GEM1] [GEM1] [GEM4] 
+=============================
+    => [SUCCESS] Tim thay loi giai sau 5 buoc!
+       Buoc 1: Hoan doi (2, 2) voi (3, 2)
+       Buoc 2: Hoan doi (4, 1) voi (5, 1)
+       Buoc 3: Hoan doi (6, 1) voi (7, 1)
+       Buoc 4: Hoan doi (6, 5) voi (7, 5)
+       Buoc 5: Hoan doi (6, 5) voi (7, 5)
+Doc file .bpz thanh cong! modeOffset04 = 1
+
+=== REPLAY XAC NHAN TUNG BUOC ===
+
+--- Truoc buoc 1: hoan doi (2,2) <-> (3,2) ---
+  Gem tai (2,2): type=1 skin=5
+  Gem tai (3,2): type=1 skin=0
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM2] [GEM6] [GEM2] [EMPTY] [EMPTY] [GEM6] [GEM5] [EMPTY] 
+[GEM6] [GEM2] [GEM6] [EMPTY] [EMPTY] [GEM5] [GEM6] [GEM5] 
+[GEM4] [GEM1] [GEM4] [EMPTY] [EMPTY] [GEM0] [GEM1] [GEM6] 
+[GEM1] [GEM4] [GEM1] [EMPTY] [GEM0] [GEM1] [GEM0] [GEM1] 
+=============================
+
+--- Truoc buoc 2: hoan doi (4,1) <-> (5,1) ---
+  Gem tai (4,1): type=1 skin=6
+  Gem tai (5,1): type=1 skin=2
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM5] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM5] [GEM6] [GEM5] 
+[GEM4] [GEM1] [GEM4] [EMPTY] [EMPTY] [GEM0] [GEM1] [GEM6] 
+[GEM1] [GEM4] [GEM1] [EMPTY] [GEM0] [GEM1] [GEM0] [GEM1] 
+=============================
+
+--- Truoc buoc 3: hoan doi (6,1) <-> (7,1) ---
+  Gem tai (6,1): type=1 skin=1
+  Gem tai (7,1): type=1 skin=4
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM5] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM5] [GEM6] [GEM5] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM0] [GEM1] [GEM6] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM0] [GEM1] [GEM0] [GEM1] 
+=============================
+
+--- Truoc buoc 4: hoan doi (6,5) <-> (7,5) ---
+  Gem tai (6,5): type=1 skin=0
+  Gem tai (7,5): type=1 skin=1
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM5] [GEM5] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM5] [GEM6] [GEM6] 
+=============================
+
+--- Truoc buoc 5: hoan doi (6,5) <-> (7,5) ---
+  Gem tai (6,5): type=1 skin=6
+  Gem tai (7,5): type=1 skin=5
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+=== KET THUC REPLAY ===
+[SUCCESS] Da dong goi va xuat file loi giai nhan phan thanh cong!
+
+[+] Dang xu ly file thu 5: puzzle_005.bpz...
+Doc file .bpz thanh cong! modeOffset04 = 1
+Initial board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] [GEM4] [GEM4] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM4] [GEM3] [GEM3] 
+[EMPTY] [GEM3] [GEM5] [GEM3] [GEM6] [EMPTY] [GEM6] [GEM6] 
+[EMPTY] [GEM5] [GEM3] [GEM5] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM3] [GEM3] [EMPTY] [GEM3] [GEM4] [GEM6] [GEM6] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM4] [GEM4] 
+[GEM5] [GEM3] [GEM5] [GEM0] [GEM2] [GEM2] [EMPTY] [EMPTY] 
+[GEM3] [GEM5] [GEM3] [GEM2] [GEM0] [GEM0] [EMPTY] [EMPTY] 
+=============================
+Board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] [GEM4] [GEM4] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM4] [GEM3] [GEM3] 
+[EMPTY] [GEM3] [GEM5] [GEM3] [GEM6] [EMPTY] [GEM6] [GEM6] 
+[EMPTY] [GEM5] [GEM3] [GEM5] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM3] [GEM3] [EMPTY] [GEM3] [GEM4] [GEM6] [GEM6] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM4] [GEM4] 
+[GEM5] [GEM3] [GEM5] [GEM0] [GEM2] [GEM2] [EMPTY] [EMPTY] 
+[GEM3] [GEM5] [GEM3] [GEM2] [GEM0] [GEM0] [EMPTY] [EMPTY] 
+=============================
+    => [SUCCESS] Tim thay loi giai sau 5 buoc!
+       Buoc 1: Hoan doi (6, 1) voi (7, 1)
+       Buoc 2: Hoan doi (6, 3) voi (7, 3)
+       Buoc 3: Hoan doi (6, 3) voi (7, 3)
+       Buoc 4: Hoan doi (7, 2) voi (7, 3)
+       Buoc 5: Hoan doi (7, 4) voi (7, 5)
+Doc file .bpz thanh cong! modeOffset04 = 1
+
+=== REPLAY XAC NHAN TUNG BUOC ===
+
+--- Truoc buoc 1: hoan doi (6,1) <-> (7,1) ---
+  Gem tai (6,1): type=1 skin=3
+  Gem tai (7,1): type=1 skin=5
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [GEM3] [GEM6] [GEM3] [EMPTY] [EMPTY] 
+[EMPTY] [GEM3] [GEM5] [GEM5] [GEM3] [GEM4] [GEM3] [GEM3] 
+[EMPTY] [GEM5] [GEM3] [GEM0] [GEM2] [GEM2] [GEM6] [GEM6] 
+[EMPTY] [GEM3] [GEM3] [GEM2] [GEM0] [GEM0] [GEM4] [GEM4] 
+=============================
+
+--- Truoc buoc 2: hoan doi (6,3) <-> (7,3) ---
+  Gem tai (6,3): type=1 skin=0
+  Gem tai (7,3): type=1 skin=2
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM3] [GEM5] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM5] [GEM3] [GEM3] [GEM6] [EMPTY] [GEM3] [GEM3] 
+[EMPTY] [GEM3] [GEM3] [GEM5] [GEM3] [GEM3] [GEM6] [GEM6] 
+=============================
+
+--- Truoc buoc 3: hoan doi (6,3) <-> (7,3) ---
+  Gem tai (6,3): type=1 skin=3
+  Gem tai (7,3): type=1 skin=5
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM3] [GEM5] [GEM5] [EMPTY] [EMPTY] [GEM3] [GEM3] 
+[EMPTY] [GEM5] [GEM3] [H]    [GEM6] [EMPTY] [GEM6] [GEM6] 
+=============================
+
+--- Truoc buoc 4: hoan doi (7,2) <-> (7,3) ---
+  Gem tai (7,2): type=1 skin=3
+  Gem tai (7,3): type=1 skin=255
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [EMPTY] [GEM6] [GEM6] 
+=============================
+
+--- Truoc buoc 5: hoan doi (7,4) <-> (7,5) ---
+  Gem tai (7,4): type=1 skin=6
+  Gem tai (7,5): type=0 skin=255
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+=== KET THUC REPLAY ===
+[SUCCESS] Da dong goi va xuat file loi giai nhan phan thanh cong!
+
+[+] Dang xu ly file thu 6: puzzle_006.bpz...
+Doc file .bpz thanh cong! modeOffset04 = 1
+Initial board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM2] [GEM6] [GEM2] [GEM4] [GEM2] [GEM4] [EMPTY] [GEM3] 
+[GEM6] [GEM2] [GEM6] [GEM2] [GEM4] [GEM2] [EMPTY] [GEM3] 
+[EMPTY] [GEM3] [GEM5] [GEM5] [GEM1] [GEM1] [GEM2] [GEM4] 
+[EMPTY] [GEM5] [GEM3] [GEM3] [GEM2] [GEM2] [GEM1] [GEM3] 
+[GEM3] [GEM2] [GEM2] [GEM6] [GEM6] [GEM4] [EMPTY] [GEM4] 
+[GEM2] [GEM3] [GEM3] [GEM4] [GEM4] [GEM6] [EMPTY] [GEM4] 
+=============================
+Board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM2] [GEM6] [GEM2] [GEM4] [GEM2] [GEM4] [EMPTY] [GEM3] 
+[GEM6] [GEM2] [GEM6] [GEM2] [GEM4] [GEM2] [EMPTY] [GEM3] 
+[EMPTY] [GEM3] [GEM5] [GEM5] [GEM1] [GEM1] [GEM2] [GEM4] 
+[EMPTY] [GEM5] [GEM3] [GEM3] [GEM2] [GEM2] [GEM1] [GEM3] 
+[GEM3] [GEM2] [GEM2] [GEM6] [GEM6] [GEM4] [EMPTY] [GEM4] 
+[GEM2] [GEM3] [GEM3] [GEM4] [GEM4] [GEM6] [EMPTY] [GEM4] 
+=============================
+    => [SUCCESS] Tim thay loi giai sau 5 buoc!
+       Buoc 1: Hoan doi (6, 5) voi (7, 5)
+       Buoc 2: Hoan doi (6, 1) voi (7, 1)
+       Buoc 3: Hoan doi (4, 7) voi (5, 7)
+       Buoc 4: Hoan doi (6, 1) voi (7, 1)
+       Buoc 5: Hoan doi (6, 4) voi (7, 4)
+Doc file .bpz thanh cong! modeOffset04 = 1
+
+=== REPLAY XAC NHAN TUNG BUOC ===
+
+--- Truoc buoc 1: hoan doi (6,5) <-> (7,5) ---
+  Gem tai (6,5): type=1 skin=4
+  Gem tai (7,5): type=1 skin=6
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] 
+[EMPTY] [GEM6] [GEM2] [EMPTY] [GEM2] [GEM4] [EMPTY] [GEM4] 
+[GEM2] [GEM2] [GEM6] [GEM4] [GEM4] [GEM2] [EMPTY] [GEM3] 
+[GEM6] [GEM3] [GEM5] [GEM2] [GEM1] [GEM1] [GEM2] [GEM4] 
+[GEM3] [GEM5] [GEM3] [GEM5] [GEM2] [GEM2] [GEM1] [GEM4] 
+=============================
+
+--- Truoc buoc 2: hoan doi (6,1) <-> (7,1) ---
+  Gem tai (6,1): type=1 skin=3
+  Gem tai (7,1): type=1 skin=5
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM4] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] 
+[GEM2] [GEM6] [GEM2] [EMPTY] [GEM2] [GEM4] [EMPTY] [GEM4] 
+[GEM6] [GEM2] [GEM6] [GEM4] [GEM4] [GEM2] [GEM2] [GEM4] 
+=============================
+
+--- Truoc buoc 3: hoan doi (4,7) <-> (5,7) ---
+  Gem tai (4,7): type=1 skin=4
+  Gem tai (5,7): type=1 skin=3
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM2] [GEM6] [GEM2] [EMPTY] [GEM2] [GEM4] [EMPTY] [EMPTY] 
+[GEM6] [GEM2] [GEM6] [GEM4] [GEM4] [GEM2] [GEM2] [EMPTY] 
+=============================
+
+--- Truoc buoc 4: hoan doi (6,1) <-> (7,1) ---
+  Gem tai (6,1): type=1 skin=6
+  Gem tai (7,1): type=1 skin=2
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM2] [GEM4] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [GEM4] [GEM4] [GEM2] [GEM2] [EMPTY] 
+=============================
+
+--- Truoc buoc 5: hoan doi (6,4) <-> (7,4) ---
+  Gem tai (6,4): type=1 skin=2
+  Gem tai (7,4): type=1 skin=4
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+=== KET THUC REPLAY ===
+[SUCCESS] Da dong goi va xuat file loi giai nhan phan thanh cong!
+
+[+] Dang xu ly file thu 7: puzzle_007.bpz...
+Doc file .bpz thanh cong! modeOffset04 = 1
+Initial board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM6] [GEM6] [GEM5] [GEM5] [EMPTY] [GEM5] [GEM5] [EMPTY] 
+[GEM5] [GEM5] [GEM6] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM0] [GEM3] [GEM3] [GEM1] [GEM2] [GEM1] [GEM5] 
+[EMPTY] [GEM3] [GEM0] [GEM0] [GEM2] [GEM1] [GEM2] [GEM5] 
+[GEM6] [GEM6] [GEM4] [EMPTY] [GEM5] [GEM4] [GEM5] [EMPTY] 
+[GEM4] [GEM4] [GEM6] [EMPTY] [GEM4] [GEM5] [GEM4] [GEM5] 
+=============================
+Board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM6] [GEM6] [GEM5] [GEM5] [EMPTY] [GEM5] [GEM5] [EMPTY] 
+[GEM5] [GEM5] [GEM6] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM0] [GEM3] [GEM3] [GEM1] [GEM2] [GEM1] [GEM5] 
+[EMPTY] [GEM3] [GEM0] [GEM0] [GEM2] [GEM1] [GEM2] [GEM5] 
+[GEM6] [GEM6] [GEM4] [EMPTY] [GEM5] [GEM4] [GEM5] [EMPTY] 
+[GEM4] [GEM4] [GEM6] [EMPTY] [GEM4] [GEM5] [GEM4] [GEM5] 
+=============================
+    => [SUCCESS] Tim thay loi giai sau 6 buoc!
+       Buoc 1: Hoan doi (2, 2) voi (3, 2)
+       Buoc 2: Hoan doi (4, 5) voi (5, 5)
+       Buoc 3: Hoan doi (6, 2) voi (7, 2)
+       Buoc 4: Hoan doi (6, 1) voi (7, 1)
+       Buoc 5: Hoan doi (6, 5) voi (7, 5)
+       Buoc 6: Hoan doi (7, 3) voi (7, 4)
+Doc file .bpz thanh cong! modeOffset04 = 1
+
+=== REPLAY XAC NHAN TUNG BUOC ===
+
+--- Truoc buoc 1: hoan doi (2,2) <-> (3,2) ---
+  Gem tai (2,2): type=1 skin=5
+  Gem tai (3,2): type=1 skin=6
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM5] [GEM5] [EMPTY] 
+[EMPTY] [GEM0] [GEM3] [EMPTY] [GEM1] [GEM2] [GEM1] [EMPTY] 
+[EMPTY] [GEM3] [GEM0] [GEM5] [GEM2] [GEM1] [GEM2] [EMPTY] 
+[GEM6] [GEM6] [GEM4] [GEM3] [GEM5] [GEM4] [GEM5] [EMPTY] 
+[GEM4] [GEM4] [GEM6] [GEM0] [GEM4] [GEM5] [GEM4] [EMPTY] 
+=============================
+
+--- Truoc buoc 2: hoan doi (4,5) <-> (5,5) ---
+  Gem tai (4,5): type=1 skin=2
+  Gem tai (5,5): type=1 skin=1
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM0] [GEM3] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM3] [GEM0] [GEM5] [EMPTY] [GEM5] [GEM5] [EMPTY] 
+[GEM6] [GEM6] [GEM4] [GEM3] [GEM5] [GEM4] [GEM5] [EMPTY] 
+[GEM4] [GEM4] [GEM6] [GEM0] [GEM4] [GEM5] [GEM4] [EMPTY] 
+=============================
+
+--- Truoc buoc 3: hoan doi (6,2) <-> (7,2) ---
+  Gem tai (6,2): type=1 skin=4
+  Gem tai (7,2): type=1 skin=6
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [GEM5] [EMPTY] [GEM5] [GEM5] [EMPTY] 
+[EMPTY] [GEM0] [GEM3] [GEM3] [GEM5] [GEM4] [GEM5] [EMPTY] 
+[EMPTY] [GEM3] [GEM0] [GEM0] [GEM4] [GEM5] [GEM4] [EMPTY] 
+=============================
+
+--- Truoc buoc 4: hoan doi (6,1) <-> (7,1) ---
+  Gem tai (6,1): type=1 skin=0
+  Gem tai (7,1): type=1 skin=3
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM5] [GEM5] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM5] [GEM4] [GEM5] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [GEM5] [GEM4] [GEM5] [GEM4] [EMPTY] 
+=============================
+
+--- Truoc buoc 5: hoan doi (6,5) <-> (7,5) ---
+  Gem tai (6,5): type=1 skin=4
+  Gem tai (7,5): type=1 skin=5
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [GEM5] [EMPTY] [GEM5] [GEM5] [EMPTY] 
+=============================
+
+--- Truoc buoc 6: hoan doi (7,3) <-> (7,4) ---
+  Gem tai (7,3): type=1 skin=5
+  Gem tai (7,4): type=0 skin=255
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+=== KET THUC REPLAY ===
+[SUCCESS] Da dong goi va xuat file loi giai nhan phan thanh cong!
+
+[+] Dang xu ly file thu 8: puzzle_008.bpz...
+Doc file .bpz thanh cong! modeOffset04 = 1
+Initial board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM5] [GEM5] [EMPTY] [GEM5] [EMPTY] [GEM2] [GEM2] [GEM6] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM6] [GEM2] 
+[GEM6] [GEM0] [GEM0] [GEM4] [GEM0] [GEM1] [GEM0] [EMPTY] 
+[GEM6] [GEM4] [GEM4] [GEM0] [GEM1] [GEM0] [GEM1] [EMPTY] 
+[EMPTY] [EMPTY] [GEM6] [GEM1] [GEM1] [GEM3] [GEM2] [GEM2] 
+[GEM6] [EMPTY] [GEM1] [GEM6] [GEM6] [GEM2] [GEM3] [GEM3] 
+=============================
+Board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM5] [GEM5] [EMPTY] [GEM5] [EMPTY] [GEM2] [GEM2] [GEM6] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM6] [GEM2] 
+[GEM6] [GEM0] [GEM0] [GEM4] [GEM0] [GEM1] [GEM0] [EMPTY] 
+[GEM6] [GEM4] [GEM4] [GEM0] [GEM1] [GEM0] [GEM1] [EMPTY] 
+[EMPTY] [EMPTY] [GEM6] [GEM1] [GEM1] [GEM3] [GEM2] [GEM2] 
+[GEM6] [EMPTY] [GEM1] [GEM6] [GEM6] [GEM2] [GEM3] [GEM3] 
+=============================
+    => [SUCCESS] Tim thay loi giai sau 6 buoc!
+       Buoc 1: Hoan doi (2, 7) voi (3, 7)
+       Buoc 2: Hoan doi (4, 5) voi (5, 5)
+       Buoc 3: Hoan doi (6, 2) voi (7, 2)
+       Buoc 4: Hoan doi (6, 3) voi (7, 3)
+       Buoc 5: Hoan doi (6, 5) voi (7, 5)
+       Buoc 6: Hoan doi (7, 3) voi (7, 2)
+Doc file .bpz thanh cong! modeOffset04 = 1
+
+=== REPLAY XAC NHAN TUNG BUOC ===
+
+--- Truoc buoc 1: hoan doi (2,7) <-> (3,7) ---
+  Gem tai (2,7): type=1 skin=6
+  Gem tai (3,7): type=1 skin=2
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [GEM5] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [GEM0] [GEM4] [GEM0] [GEM1] [GEM0] [EMPTY] 
+[EMPTY] [GEM5] [GEM4] [GEM0] [GEM1] [GEM0] [GEM1] [EMPTY] 
+[EMPTY] [GEM0] [GEM6] [GEM1] [GEM1] [GEM3] [GEM2] [GEM2] 
+[GEM5] [GEM4] [GEM1] [GEM6] [GEM6] [GEM2] [GEM3] [GEM3] 
+=============================
+
+--- Truoc buoc 2: hoan doi (4,5) <-> (5,5) ---
+  Gem tai (4,5): type=1 skin=1
+  Gem tai (5,5): type=1 skin=0
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [GEM5] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [GEM0] [GEM4] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM5] [GEM4] [GEM0] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM0] [GEM6] [GEM1] [GEM1] [GEM3] [GEM2] [GEM2] 
+[GEM5] [GEM4] [GEM1] [GEM6] [GEM6] [GEM2] [GEM3] [GEM3] 
+=============================
+
+--- Truoc buoc 3: hoan doi (6,2) <-> (7,2) ---
+  Gem tai (6,2): type=1 skin=6
+  Gem tai (7,2): type=1 skin=1
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM5] [EMPTY] [GEM5] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM0] [GEM0] [GEM4] [EMPTY] [GEM3] [GEM2] [GEM2] 
+[GEM5] [GEM4] [GEM4] [GEM0] [EMPTY] [GEM2] [GEM3] [GEM3] 
+=============================
+
+--- Truoc buoc 4: hoan doi (6,3) <-> (7,3) ---
+  Gem tai (6,3): type=1 skin=4
+  Gem tai (7,3): type=1 skin=0
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] [GEM2] [GEM2] 
+[GEM5] [GEM5] [EMPTY] [GEM5] [EMPTY] [GEM2] [GEM3] [GEM3] 
+=============================
+
+--- Truoc buoc 5: hoan doi (6,5) <-> (7,5) ---
+  Gem tai (6,5): type=1 skin=3
+  Gem tai (7,5): type=1 skin=2
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[GEM5] [GEM5] [EMPTY] [GEM5] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+
+--- Truoc buoc 6: hoan doi (7,3) <-> (7,2) ---
+  Gem tai (7,3): type=1 skin=5
+  Gem tai (7,2): type=0 skin=255
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+=== KET THUC REPLAY ===
+[SUCCESS] Da dong goi va xuat file loi giai nhan phan thanh cong!
+
+[+] Dang xu ly file thu 9: puzzle_009.bpz...
+Doc file .bpz thanh cong! modeOffset04 = 1
+Initial board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM0] [GEM6] [GEM6] [GEM4] [GEM2] [GEM3] [GEM3] 
+[EMPTY] [GEM6] [GEM0] [GEM0] [EMPTY] [GEM3] [GEM2] [GEM2] 
+[GEM1] [GEM2] [GEM2] [GEM5] [GEM4] [GEM0] [GEM4] [GEM0] 
+[GEM1] [GEM5] [GEM5] [GEM2] [GEM4] [GEM4] [GEM0] [GEM4] 
+[EMPTY] [GEM3] [GEM3] [GEM5] [EMPTY] [GEM1] [GEM6] [GEM6] 
+[GEM1] [GEM5] [GEM5] [GEM3] [EMPTY] [GEM6] [GEM1] [GEM1] 
+=============================
+Board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM0] [GEM6] [GEM6] [GEM4] [GEM2] [GEM3] [GEM3] 
+[EMPTY] [GEM6] [GEM0] [GEM0] [EMPTY] [GEM3] [GEM2] [GEM2] 
+[GEM1] [GEM2] [GEM2] [GEM5] [GEM4] [GEM0] [GEM4] [GEM0] 
+[GEM1] [GEM5] [GEM5] [GEM2] [GEM4] [GEM4] [GEM0] [GEM4] 
+[EMPTY] [GEM3] [GEM3] [GEM5] [EMPTY] [GEM1] [GEM6] [GEM6] 
+[GEM1] [GEM5] [GEM5] [GEM3] [EMPTY] [GEM6] [GEM1] [GEM1] 
+=============================
+    => [SUCCESS] Tim thay loi giai sau 6 buoc!
+       Buoc 1: Hoan doi (2, 1) voi (3, 1)
+       Buoc 2: Hoan doi (2, 5) voi (3, 5)
+       Buoc 3: Hoan doi (4, 3) voi (5, 3)
+       Buoc 4: Hoan doi (4, 6) voi (5, 6)
+       Buoc 5: Hoan doi (6, 3) voi (7, 3)
+       Buoc 6: Hoan doi (6, 5) voi (7, 5)
+Doc file .bpz thanh cong! modeOffset04 = 1
+
+=== REPLAY XAC NHAN TUNG BUOC ===
+
+--- Truoc buoc 1: hoan doi (2,1) <-> (3,1) ---
+  Gem tai (2,1): type=1 skin=0
+  Gem tai (3,1): type=1 skin=6
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM2] [GEM3] [GEM3] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM3] [GEM2] [GEM2] 
+[EMPTY] [GEM2] [GEM2] [GEM5] [EMPTY] [GEM0] [GEM4] [GEM0] 
+[EMPTY] [GEM5] [GEM5] [GEM2] [EMPTY] [GEM4] [GEM0] [GEM4] 
+[EMPTY] [GEM3] [GEM3] [GEM5] [EMPTY] [GEM1] [GEM6] [GEM6] 
+[EMPTY] [GEM5] [GEM5] [GEM3] [EMPTY] [GEM6] [GEM1] [GEM1] 
+=============================
+
+--- Truoc buoc 2: hoan doi (2,5) <-> (3,5) ---
+  Gem tai (2,5): type=1 skin=2
+  Gem tai (3,5): type=1 skin=3
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM2] [GEM2] [GEM5] [EMPTY] [GEM0] [GEM4] [GEM0] 
+[EMPTY] [GEM5] [GEM5] [GEM2] [EMPTY] [GEM4] [GEM0] [GEM4] 
+[EMPTY] [GEM3] [GEM3] [GEM5] [EMPTY] [GEM1] [GEM6] [GEM6] 
+[EMPTY] [GEM5] [GEM5] [GEM3] [EMPTY] [GEM6] [GEM1] [GEM1] 
+=============================
+
+--- Truoc buoc 3: hoan doi (4,3) <-> (5,3) ---
+  Gem tai (4,3): type=1 skin=5
+  Gem tai (5,3): type=1 skin=2
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM0] [GEM4] [GEM0] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM4] [GEM0] [GEM4] 
+[EMPTY] [GEM3] [GEM3] [GEM5] [EMPTY] [GEM1] [GEM6] [GEM6] 
+[EMPTY] [GEM5] [GEM5] [GEM3] [EMPTY] [GEM6] [GEM1] [GEM1] 
+=============================
+
+--- Truoc buoc 4: hoan doi (4,6) <-> (5,6) ---
+  Gem tai (4,6): type=1 skin=4
+  Gem tai (5,6): type=1 skin=0
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [GEM3] [GEM3] [GEM5] [EMPTY] [GEM1] [GEM6] [GEM6] 
+[EMPTY] [GEM5] [GEM5] [GEM3] [EMPTY] [GEM6] [GEM1] [GEM1] 
+=============================
+
+--- Truoc buoc 5: hoan doi (6,3) <-> (7,3) ---
+  Gem tai (6,3): type=1 skin=5
+  Gem tai (7,3): type=1 skin=3
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM6] [GEM6] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM1] [GEM1] 
+=============================
+
+--- Truoc buoc 6: hoan doi (6,5) <-> (7,5) ---
+  Gem tai (6,5): type=1 skin=1
+  Gem tai (7,5): type=1 skin=6
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+=== KET THUC REPLAY ===
+[SUCCESS] Da dong goi va xuat file loi giai nhan phan thanh cong!
+
+[+] Dang xu ly file thu 10: puzzle_010.bpz...
+Doc file .bpz thanh cong! modeOffset04 = 1
+Initial board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM1] [EMPTY] [GEM1] 
+[EMPTY] [GEM5] [GEM2] [GEM5] [EMPTY] [GEM6] [GEM1] [GEM6] 
+[EMPTY] [GEM2] [GEM5] [GEM2] [EMPTY] [GEM1] [GEM6] [GEM1] 
+[GEM4] [EMPTY] [GEM4] [GEM4] [GEM3] [GEM2] [GEM2] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM2] [GEM3] [GEM3] [EMPTY] 
+[EMPTY] [EMPTY] [GEM1] [GEM1] [GEM2] [GEM3] [GEM5] [GEM3] 
+[EMPTY] [EMPTY] [GEM2] [GEM2] [GEM1] [GEM5] [GEM3] [GEM5] 
+=============================
+Board state:
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM1] [EMPTY] [GEM1] 
+[EMPTY] [GEM5] [GEM2] [GEM5] [EMPTY] [GEM6] [GEM1] [GEM6] 
+[EMPTY] [GEM2] [GEM5] [GEM2] [EMPTY] [GEM1] [GEM6] [GEM1] 
+[GEM4] [EMPTY] [GEM4] [GEM4] [GEM3] [GEM2] [GEM2] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM2] [GEM3] [GEM3] [EMPTY] 
+[EMPTY] [EMPTY] [GEM1] [GEM1] [GEM2] [GEM3] [GEM5] [GEM3] 
+[EMPTY] [EMPTY] [GEM2] [GEM2] [GEM1] [GEM5] [GEM3] [GEM5] 
+=============================
+    => [SUCCESS] Tim thay loi giai sau 4 buoc!
+       Buoc 1: Hoan doi (4, 0) voi (4, 1)
+       Buoc 2: Hoan doi (6, 2) voi (7, 2)
+       Buoc 3: Hoan doi (6, 6) voi (7, 6)
+       Buoc 4: Hoan doi (6, 6) voi (7, 6)
+Doc file .bpz thanh cong! modeOffset04 = 1
+
+=== REPLAY XAC NHAN TUNG BUOC ===
+
+--- Truoc buoc 1: hoan doi (4,0) <-> (4,1) ---
+  Gem tai (4,0): type=1 skin=4
+  Gem tai (4,1): type=0 skin=255
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM1] [GEM1] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM6] [GEM6] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM2] [GEM2] [GEM1] 
+[EMPTY] [EMPTY] [GEM2] [GEM5] [GEM2] [GEM3] [GEM5] [GEM3] 
+[EMPTY] [GEM5] [GEM5] [GEM2] [GEM2] [GEM5] [GEM3] [GEM5] 
+=============================
+
+--- Truoc buoc 2: hoan doi (6,2) <-> (7,2) ---
+  Gem tai (6,2): type=1 skin=2
+  Gem tai (7,2): type=1 skin=5
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM1] [GEM1] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM6] [GEM6] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM2] [GEM2] [GEM1] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM3] [GEM5] [GEM3] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM2] [GEM5] [GEM3] [GEM5] 
+=============================
+
+--- Truoc buoc 3: hoan doi (6,6) <-> (7,6) ---
+  Gem tai (6,6): type=1 skin=5
+  Gem tai (7,6): type=1 skin=3
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [EMPTY] [GEM1] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM6] [GEM1] [GEM6] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [GEM1] [GEM1] [GEM6] [GEM1] 
+=============================
+
+--- Truoc buoc 4: hoan doi (6,6) <-> (7,6) ---
+  Gem tai (6,6): type=1 skin=1
+  Gem tai (7,6): type=1 skin=6
+
+=== BAN CO HIEN TAI (8x8) ===
+
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+[EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] [EMPTY] 
+=============================
+=== KET THUC REPLAY ===
+[SUCCESS] Da dong goi va xuat file loi giai nhan phan thanh cong!
+
+===============================================================
+   HOAN THANH QUET: Da xu ly 10/10 file .bpz thanh cong!
+===============================================================

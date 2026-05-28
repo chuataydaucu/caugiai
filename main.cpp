@@ -1,12 +1,10 @@
 #include "BejeweledSolver.h"
 #include "PuzzleIDs.h"
+#include <array>
 #include <vector>
-#include <unordered_set> 
 #include <unordered_map>
-#include <sstream>       // <-- THÊM THƯ VIỆN CHUYỂN ĐỔI CHUỖI
 #include <filesystem> // <-- Thư viện này giúp C++ tự lục tìm file trong máy tính
 #include <algorithm>
-#include <queue>
 #include <cmath>
 #include <chrono>        // <-- Thêm để hỗ trợ timeout
 
@@ -15,16 +13,69 @@ std::chrono::steady_clock::time_point g_solveDeadline;
 
 uint8_t currentBpzHeaderPrefix[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
+struct BoardKey {
+    std::array<uint64_t, 32> data;
+    bool operator==(const BoardKey& other) const noexcept {
+        return data == other.data;
+    }
+};
+
+struct BoardKeyHash {
+    size_t operator()(const BoardKey& key) const noexcept {
+        uint64_t h = 1469598103934665603ULL;
+        for (uint64_t value : key.data) {
+            h ^= value;
+            h *= 1099511628211ULL;
+        }
+        return static_cast<size_t>(h ^ (h >> 32));
+    }
+};
+
+using BoardStateMap = std::unordered_map<BoardKey, int, BoardKeyHash>;
+
+struct Coord {
+    uint8_t r;
+    uint8_t c;
+};
+
+constexpr int kSwapDR[2] = {1, 0};
+constexpr int kSwapDC[2] = {0, 1};
+
+inline BoardKey makeBoardKey(const BejeweledBoard& board) {
+    BoardKey key;
+    uint8_t* dst = reinterpret_cast<uint8_t*>(key.data.data());
+    for (int r = 0; r < 8; ++r) {
+        for (int c = 0; c < 8; ++c) {
+            const Gem& gem = board.matrix[r][c];
+            *dst++ = static_cast<uint8_t>(gem.type);
+            *dst++ = gem.skin;
+            *dst++ = gem.isPowered;
+            *dst++ = gem.bombCounter;
+        }
+    }
+    return key;
+}
+
 // HÀM ĐỌC FILE .BPZ NHỊ PHÂN
 bool loadBPZFile(const std::string& filename, BejeweledBoard& board) {
-    std::ifstream file(filename, std::ios::binary);
+    std::ifstream file(filename, std::ios::binary | std::ios::ate);
     if (!file.is_open()) {
         std::cerr << "Loi: Khong the mo duoc file: " << filename << ". Hay kiem tra xem file co nam dung thu muc khong!" << std::endl;
         return false;
     }
 
-    // Đọc toàn bộ nội dung file vào buffer
-    std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    std::streamsize fileSize = file.tellg();
+    if (fileSize < 10) {
+        std::cerr << "Loi: File qua nho!" << std::endl;
+        return false;
+    }
+
+    std::vector<uint8_t> content(static_cast<size_t>(fileSize));
+    file.seekg(0, std::ios::beg);
+    if (!file.read(reinterpret_cast<char*>(content.data()), fileSize)) {
+        std::cerr << "Loi: Khong the doc du lieu tu file: " << filename << std::endl;
+        return false;
+    }
     file.close();
 
     if (content.size() < 10) {
@@ -34,16 +85,20 @@ bool loadBPZFile(const std::string& filename, BejeweledBoard& board) {
 
     // Đọc 10 byte đầu làm Header Prefix
     for (int i = 0; i < 10; ++i) {
-        currentBpzHeaderPrefix[i] = static_cast<uint8_t>(content[i]);
+        currentBpzHeaderPrefix[i] = content[i];
     }
     
     // Byte thứ 5 làm mode phân biệt Đá/Bom
-    board.modeOffset04 = static_cast<uint8_t>(content[4]);
+    board.modeOffset04 = content[4];
 
     // Kiểm tra và bỏ qua phần metadata nếu file được sinh từ generator của nhóm khác
     size_t startOffset = 5;
-    if (content.find("PuzzName") != std::string::npos) {
-        startOffset = 40; // Bỏ qua 40 byte đầu (0x28) chứa metadata
+    for (size_t pos = 0; pos + 8 < content.size(); ++pos) {
+        if (content[pos] == 'P' && content[pos+1] == 'u' && content[pos+2] == 'z' && content[pos+3] == 'z' &&
+            content[pos+4] == 'N' && content[pos+5] == 'a' && content[pos+6] == 'm' && content[pos+7] == 'e') {
+            startOffset = 40;
+            break;
+        }
     }
 
     size_t curr = startOffset;
@@ -141,14 +196,18 @@ void printBoard(const BejeweledBoard& board) {
 // ==================== CÁC HÀM LOGIC GAME (BƯỚC 2) ====================
 
 // 1. Hàm phụ trợ: Kiểm tra xem tại một ô cụ thể có đang tạo ra Match-3 theo hàng ngang hoặc hàng dọc không
-uint8_t getGemColor(const BejeweledBoard& board, int r, int c) {
+inline bool isRealGem(const Gem& gem) {
+    return gem.type == NORMAL || gem.type == BOMB;
+}
+
+inline uint8_t getGemColor(const BejeweledBoard& board, int r, int c) {
     const Gem& gem = board.matrix[r][c];
     if (gem.type == NORMAL && gem.isPowered != 0x02) return gem.skin;
     if (gem.type == BOMB) return gem.isPowered; // byte isPowered lưu màu sắc quả bom
     return 0xFF; // EMPTY hoặc ROCK hoặc HYPERCUBE không thể match
 }
 
-bool isMatchAt(const BejeweledBoard& board, int r, int c) {
+inline bool isMatchAt(const BejeweledBoard& board, int r, int c) {
     uint8_t color = getGemColor(board, r, c);
     if (color == 0xFF) return false;
 
@@ -165,7 +224,7 @@ bool isMatchAt(const BejeweledBoard& board, int r, int c) {
     return false;
 }
 
-bool checkMatchesExist(const BejeweledBoard& board) {
+inline bool checkMatchesExist(const BejeweledBoard& board) {
     for (int r = 0; r < 8; ++r) {
         for (int c = 0; c < 8; ++c) {
             if (isMatchAt(board, r, c)) return true;
@@ -177,7 +236,7 @@ bool checkMatchesExist(const BejeweledBoard& board) {
 // 2. Hàm kiểm tra lượt tráo đổi giữa (r1, c1) và (r2, c2) có hợp lệ không
 bool allowGeneralSlides = false;
 
-bool isValidSwap(BejeweledBoard& board, int r1, int c1, int r2, int c2) {
+inline bool isValidSwap(BejeweledBoard& board, int r1, int c1, int r2, int c2) {
     // Chỉ được tráo đổi ô kề cạnh (ngang hoặc dọc)
     if (abs(r1 - r2) + abs(c1 - c2) != 1) return false;
 
@@ -238,48 +297,28 @@ bool isValidSwap(BejeweledBoard& board, int r1, int c1, int r2, int c2) {
 }
 
 // Hàm phụ trợ tìm độ dài chuỗi liên tục
-bool hasContiguousLine(const std::vector<std::pair<int, int>>& C, bool horizontal, int K) {
+inline bool hasContiguousLine(const bool mask[8][8], bool horizontal, int K) {
     if (horizontal) {
         for (int r = 0; r < 8; ++r) {
-            int maxContig = 0;
             int currentContig = 0;
             for (int c = 0; c < 8; ++c) {
-                bool found = false;
-                for (const auto& p : C) {
-                    if (p.first == r && p.second == c) {
-                        found = true;
-                        break;
-                    }
-                }
-                if (found) {
-                    currentContig++;
-                    if (currentContig > maxContig) maxContig = currentContig;
+                if (mask[r][c]) {
+                    if (++currentContig >= K) return true;
                 } else {
                     currentContig = 0;
                 }
             }
-            if (maxContig >= K) return true;
         }
     } else {
         for (int c = 0; c < 8; ++c) {
-            int maxContig = 0;
             int currentContig = 0;
             for (int r = 0; r < 8; ++r) {
-                bool found = false;
-                for (const auto& p : C) {
-                    if (p.first == r && p.second == c) {
-                        found = true;
-                        break;
-                    }
-                }
-                if (found) {
-                    currentContig++;
-                    if (currentContig > maxContig) maxContig = currentContig;
+                if (mask[r][c]) {
+                    if (++currentContig >= K) return true;
                 } else {
                     currentContig = 0;
                 }
             }
-            if (maxContig >= K) return true;
         }
     }
     return false;
@@ -327,56 +366,63 @@ bool executeMatchAndExplosions(BejeweledBoard& board, int swapR1 = -1, int swapC
     bool toRemove[8][8] = {false};
 
     struct CreatedSpecialGem {
-        int r, c;
+        uint8_t r;
+        uint8_t c;
         uint8_t skin;
         uint8_t isPowered;
     };
-    std::vector<CreatedSpecialGem> specialGemsToCreate;
+    std::array<CreatedSpecialGem, 64> specialGemsToCreate{};
+    int specialGemCount = 0;
 
     for (int r = 0; r < 8; ++r) {
         for (int c = 0; c < 8; ++c) {
             if ((markedH[r][c] || markedV[r][c]) && !visited[r][c]) {
                 uint8_t color = getGemColor(board, r, c);
-                // DFS tìm component C
-                std::vector<std::pair<int, int>> C;
-                std::vector<std::pair<int, int>> queue;
-                queue.push_back({r, c});
-                visited[r][c] = true;
+                bool componentMask[8][8] = {false};
+                std::array<Coord, 64> queue;
+                std::array<Coord, 64> component;
+                int qSize = 0;
                 int qIdx = 0;
-                while (qIdx < (int)queue.size()) {
-                    auto [currR, currC] = queue[qIdx++];
-                    C.push_back({currR, currC});
-                    int dr[] = {-1, 1, 0, 0};
-                    int dc[] = {0, 0, -1, 1};
+                int compSize = 0;
+
+                queue[qSize++] = Coord{static_cast<uint8_t>(r), static_cast<uint8_t>(c)};
+                visited[r][c] = true;
+                componentMask[r][c] = true;
+
+                while (qIdx < qSize) {
+                    Coord cur = queue[qIdx++];
+                    component[compSize++] = cur;
+                    const int dr[4] = {-1, 1, 0, 0};
+                    const int dc[4] = {0, 0, -1, 1};
                     for (int i = 0; i < 4; ++i) {
-                        int nr = currR + dr[i];
-                        int nc = currC + dc[i];
+                        int nr = cur.r + dr[i];
+                        int nc = cur.c + dc[i];
                         if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8) {
                             if ((markedH[nr][nc] || markedV[nr][nc]) && !visited[nr][nc]) {
                                 if (getGemColor(board, nr, nc) == color) {
                                     visited[nr][nc] = true;
-                                    queue.push_back({nr, nc});
+                                    componentMask[nr][nc] = true;
+                                    queue[qSize++] = Coord{static_cast<uint8_t>(nr), static_cast<uint8_t>(nc)};
                                 }
                             }
                         }
                     }
                 }
 
-                // Kiểm tra loại ngọc đặc biệt tạo ra
-                bool hasLine5 = hasContiguousLine(C, true, 5) || hasContiguousLine(C, false, 5);
-                bool hasLine4 = hasContiguousLine(C, true, 4) || hasContiguousLine(C, false, 4);
-                
-                // Kiểm tra xem có giao điểm hay không (L/T shape)
+                bool hasLine5 = hasContiguousLine(componentMask, true, 5) || hasContiguousLine(componentMask, false, 5);
+                bool hasLine4 = hasContiguousLine(componentMask, true, 4) || hasContiguousLine(componentMask, false, 4);
+
                 bool hasIntersection = false;
-                for (const auto& p : C) {
-                    if (markedH[p.first][p.second] && markedV[p.first][p.second]) {
+                for (int i = 0; i < compSize; ++i) {
+                    int pr = component[i].r;
+                    int pc = component[i].c;
+                    if (markedH[pr][pc] && markedV[pr][pc]) {
                         hasIntersection = true;
                         break;
                     }
                 }
-                
+
                 uint8_t createType = 0x00; // NONE
-                // Cả người chơi và cascade đều tạo ngọc đặc biệt trong Bejeweled 2
                 if (hasLine5) {
                     createType = 0x02; // HYPERCUBE
                 } else if (hasLine4 || hasIntersection) {
@@ -384,44 +430,49 @@ bool executeMatchAndExplosions(BejeweledBoard& board, int swapR1 = -1, int swapC
                 }
 
                 if (createType != 0x00) {
-                    int tr = -1, tc = -1;
-                    
-                    // Ưu tiên vị trí giao điểm (cho L/T shape hoặc các hình đặc biệt)
-                    for (const auto& p : C) {
-                        if (markedH[p.first][p.second] && markedV[p.first][p.second]) {
-                            tr = p.first;
-                            tc = p.second;
+                    int tr = -1;
+                    int tc = -1;
+                    for (int i = 0; i < compSize; ++i) {
+                        int pr = component[i].r;
+                        int pc = component[i].c;
+                        if (markedH[pr][pc] && markedV[pr][pc]) {
+                            tr = pr;
+                            tc = pc;
                             break;
                         }
                     }
-                    
-                    // Nếu không có giao điểm, ưu tiên vị trí swap của player
                     if (tr == -1) {
-                        for (const auto& p : C) {
-                            if ((p.first == swapR1 && p.second == swapC1) || (p.first == swapR2 && p.second == swapC2)) {
-                                tr = p.first;
-                                tc = p.second;
+                        for (int i = 0; i < compSize; ++i) {
+                            int pr = component[i].r;
+                            int pc = component[i].c;
+                            if ((pr == swapR1 && pc == swapC1) || (pr == swapR2 && pc == swapC2)) {
+                                tr = pr;
+                                tc = pc;
                                 break;
                             }
                         }
                     }
-
-                    // Vị trí đầu tiên
                     if (tr == -1) {
-                        tr = C[0].first;
-                        tc = C[0].second;
+                        tr = component[0].r;
+                        tc = component[0].c;
                     }
 
-                    specialGemsToCreate.push_back({tr, tc, color, createType});
+                    if (specialGemCount < (int)specialGemsToCreate.size()) {
+                        specialGemsToCreate[specialGemCount++] = CreatedSpecialGem{static_cast<uint8_t>(tr), static_cast<uint8_t>(tc), color, createType};
+                    }
 
-                    for (const auto& p : C) {
-                        if (p.first != tr || p.second != tc) {
-                            toRemove[p.first][p.second] = true;
+                    for (int i = 0; i < compSize; ++i) {
+                        int pr = component[i].r;
+                        int pc = component[i].c;
+                        if (pr != tr || pc != tc) {
+                            toRemove[pr][pc] = true;
                         }
                     }
                 } else {
-                    for (const auto& p : C) {
-                        toRemove[p.first][p.second] = true;
+                    for (int i = 0; i < compSize; ++i) {
+                        int pr = component[i].r;
+                        int pc = component[i].c;
+                        toRemove[pr][pc] = true;
                     }
                 }
             }
@@ -429,7 +480,8 @@ bool executeMatchAndExplosions(BejeweledBoard& board, int swapR1 = -1, int swapC
     }
 
     // Tạo các ngọc đặc biệt trước khi vụ nổ lan truyền xảy ra
-    for (const auto& sg : specialGemsToCreate) {
+    for (int i = 0; i < specialGemCount; ++i) {
+        const auto& sg = specialGemsToCreate[i];
         board.matrix[sg.r][sg.c].type = NORMAL;
         board.matrix[sg.r][sg.c].skin = sg.isPowered == 0x02 ? 0xFF : sg.skin;
         board.matrix[sg.r][sg.c].isPowered = sg.isPowered;
@@ -437,35 +489,36 @@ bool executeMatchAndExplosions(BejeweledBoard& board, int swapR1 = -1, int swapC
     }
 
     // Xử lý nổ dây chuyền 3x3 đối với Flame Gem (isPowered == 0x01) và BOMB
-    std::vector<std::pair<int, int>> explosionQueue;
+    std::array<Coord, 64> explosionQueue;
     bool exploded[8][8] = {false};
+    int explosionSize = 0;
+    int explosionIndex = 0;
 
     for (int r = 0; r < 8; ++r) {
         for (int c = 0; c < 8; ++c) {
             if (toRemove[r][c]) {
                 const Gem& gem = board.matrix[r][c];
                 if ((gem.type == NORMAL && gem.isPowered == 0x01) || gem.type == BOMB) {
-                    explosionQueue.push_back({r, c});
+                    explosionQueue[explosionSize++] = Coord{static_cast<uint8_t>(r), static_cast<uint8_t>(c)};
                     exploded[r][c] = true;
                 }
             }
         }
     }
 
-    int queueIndex = 0;
-    while (queueIndex < (int)explosionQueue.size()) {
-        auto [er, ec] = explosionQueue[queueIndex++];
+    while (explosionIndex < explosionSize) {
+        Coord cur = explosionQueue[explosionIndex++];
         for (int dr = -1; dr <= 1; ++dr) {
             for (int dc = -1; dc <= 1; ++dc) {
-                int nr = er + dr;
-                int nc = ec + dc;
+                int nr = cur.r + dr;
+                int nc = cur.c + dc;
                 if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8) {
                     toRemove[nr][nc] = true;
                     const Gem& nextGem = board.matrix[nr][nc];
                     if ((nextGem.type == NORMAL && nextGem.isPowered == 0x01) || nextGem.type == BOMB) {
                         if (!exploded[nr][nc]) {
                             exploded[nr][nc] = true;
-                            explosionQueue.push_back({nr, nc});
+                            explosionQueue[explosionSize++] = Coord{static_cast<uint8_t>(nr), static_cast<uint8_t>(nc)};
                         }
                     }
                 }
@@ -474,7 +527,8 @@ bool executeMatchAndExplosions(BejeweledBoard& board, int swapR1 = -1, int swapC
     }
 
     // BẢO VỆ CÁC NGỌC ĐẶC BIỆT VỪA ĐƯỢC TẠO RA
-    for (const auto& sg : specialGemsToCreate) {
+    for (int i = 0; i < specialGemCount; ++i) {
+        const auto& sg = specialGemsToCreate[i];
         toRemove[sg.r][sg.c] = false;
     }
 
@@ -500,24 +554,29 @@ void executeMatch(BejeweledBoard& board) {
 // 4. Hàm xử lý trọng lực rơi rụng Gem từ trên xuống lấp chỗ trống
 bool applyGravity(BejeweledBoard& board) {
     bool boardChanged = false;
-    // Duyệt qua từng cột từ trái sang phải
     for (int c = 0; c < 8; ++c) {
-        // Duyệt từ hàng đáy (hàng 7) ngược lên đỉnh (hàng 0)
-        for (int r = 7; r >= 0; --r) {
-            if (board.matrix[r][c].type == EMPTY) {
-                // Tìm viên Gem gần nhất ở phía trên ô trống này mà không phải là Đá
-                int upperRow = r - 1;
-                while (upperRow >= 0 && board.matrix[upperRow][c].type == EMPTY) {
-                    upperRow--;
-                }
-                
-                // Nếu tìm thấy viên Gem ở trên, kéo nó rơi xuống vị trí ô trống r hiện tại
-                if (upperRow >= 0) {
-                    board.matrix[r][c] = board.matrix[upperRow][c];
-                    board.matrix[upperRow][c].type = EMPTY; // Ô cũ trở thành trống
-                    board.matrix[upperRow][c].skin = 0xFF;
+        int writeRow = 7;
+        for (int readRow = 7; readRow >= 0; --readRow) {
+            if (board.matrix[readRow][c].type != EMPTY) {
+                if (readRow != writeRow) {
+                    board.matrix[writeRow][c] = board.matrix[readRow][c];
+                    board.matrix[readRow][c].type = EMPTY;
+                    board.matrix[readRow][c].skin = 0xFF;
+                    board.matrix[readRow][c].isPowered = 0x00;
+                    board.matrix[readRow][c].bombCounter = 0;
                     boardChanged = true;
                 }
+                --writeRow;
+            }
+        }
+        for (int r = writeRow; r >= 0; --r) {
+            if (board.matrix[r][c].type != EMPTY || board.matrix[r][c].skin != 0xFF ||
+                board.matrix[r][c].isPowered != 0x00 || board.matrix[r][c].bombCounter != 0) {
+                board.matrix[r][c].type = EMPTY;
+                board.matrix[r][c].skin = 0xFF;
+                board.matrix[r][c].isPowered = 0x00;
+                board.matrix[r][c].bombCounter = 0;
+                boardChanged = true;
             }
         }
     }
@@ -535,23 +594,6 @@ bool isBoardCleared(const BejeweledBoard& board) {
     return true;
 } // Bảng sạch bóng 100%
 
-
-// Hàm chuyển đổi ma trận 8x8 thành một chuỗi nhị phân duy nhất để làm khóa băm (Hash Key)
-std::string serializeBoard(const BejeweledBoard& board) {
-    std::string key;
-    key.resize(8 * 8 * 4);
-    int idx = 0;
-    for (int r = 0; r < 8; ++r) {
-        for (int c = 0; c < 8; ++c) {
-            const Gem& gem = board.matrix[r][c];
-            key[idx++] = static_cast<char>(gem.type);
-            key[idx++] = static_cast<char>(gem.skin);
-            key[idx++] = static_cast<char>(gem.isPowered);
-            key[idx++] = static_cast<char>(gem.bombCounter);
-        }
-    }
-    return key;
-}
 
 // 2. Thuật toán Đệ quy kết hợp Quay lui (Backtracking) để giải bài toán
 // HÀM GIẢI BÀI TOÁN NÂNG CẤP TỐI ƯU CẮT NHÁNH CẬN
@@ -607,35 +649,36 @@ void triggerHypercube(BejeweledBoard& board, int hr, int hc, int tr, int tc) {
     }
 
     // Xử lý nổ lan kích hoạt Flame Gem/Bomb
-    std::vector<std::pair<int, int>> explosionQueue;
+    std::array<Coord, 64> explosionQueue;
     bool exploded[8][8] = {false};
+    int explosionSize = 0;
+    int explosionIndex = 0;
 
     for (int r = 0; r < 8; ++r) {
         for (int c = 0; c < 8; ++c) {
             if (toRemove[r][c]) {
                 const Gem& gem = board.matrix[r][c];
                 if ((gem.type == NORMAL && gem.isPowered == 0x01) || gem.type == BOMB) {
-                    explosionQueue.push_back({r, c});
+                    explosionQueue[explosionSize++] = Coord{static_cast<uint8_t>(r), static_cast<uint8_t>(c)};
                     exploded[r][c] = true;
                 }
             }
         }
     }
 
-    int queueIndex = 0;
-    while (queueIndex < (int)explosionQueue.size()) {
-        auto [er, ec] = explosionQueue[queueIndex++];
+    while (explosionIndex < explosionSize) {
+        Coord cur = explosionQueue[explosionIndex++];
         for (int dr = -1; dr <= 1; ++dr) {
             for (int dc = -1; dc <= 1; ++dc) {
-                int nr = er + dr;
-                int nc = ec + dc;
+                int nr = cur.r + dr;
+                int nc = cur.c + dc;
                 if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8) {
                     toRemove[nr][nc] = true;
                     const Gem& nextGem = board.matrix[nr][nc];
                     if ((nextGem.type == NORMAL && nextGem.isPowered == 0x01) || nextGem.type == BOMB) {
                         if (!exploded[nr][nc]) {
                             exploded[nr][nc] = true;
-                            explosionQueue.push_back({nr, nc});
+                            explosionQueue[explosionSize++] = Coord{static_cast<uint8_t>(nr), static_cast<uint8_t>(nc)};
                         }
                     }
                 }
@@ -663,26 +706,27 @@ void triggerBombExplosion(BejeweledBoard& board, int bombR, int bombC) {
     bool toRemove[8][8] = {false};
     toRemove[bombR][bombC] = true;
 
-    std::vector<std::pair<int, int>> explosionQueue;
+    std::array<Coord, 64> explosionQueue;
     bool exploded[8][8] = {false};
+    int explosionSize = 0;
+    int explosionIndex = 0;
 
-    explosionQueue.push_back({bombR, bombC});
+    explosionQueue[explosionSize++] = Coord{static_cast<uint8_t>(bombR), static_cast<uint8_t>(bombC)};
     exploded[bombR][bombC] = true;
 
-    int queueIndex = 0;
-    while (queueIndex < (int)explosionQueue.size()) {
-        auto [er, ec] = explosionQueue[queueIndex++];
+    while (explosionIndex < explosionSize) {
+        Coord cur = explosionQueue[explosionIndex++];
         for (int dr = -1; dr <= 1; ++dr) {
             for (int dc = -1; dc <= 1; ++dc) {
-                int nr = er + dr;
-                int nc = ec + dc;
+                int nr = cur.r + dr;
+                int nc = cur.c + dc;
                 if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8) {
                     toRemove[nr][nc] = true;
                     const Gem& nextGem = board.matrix[nr][nc];
                     if ((nextGem.type == NORMAL && nextGem.isPowered == 0x01) || nextGem.type == BOMB) {
                         if (!exploded[nr][nc]) {
                             exploded[nr][nc] = true;
-                            explosionQueue.push_back({nr, nc});
+                            explosionQueue[explosionSize++] = Coord{static_cast<uint8_t>(nr), static_cast<uint8_t>(nc)};
                         }
                     }
                 }
@@ -702,8 +746,9 @@ void triggerBombExplosion(BejeweledBoard& board, int bombR, int bombC) {
     }
 }
 
-bool tickBombs(BejeweledBoard& board) {
-    std::vector<std::pair<int, int>> bombsToExplode;
+void tickBombs(BejeweledBoard& board) {
+    std::array<Coord, 64> bombsToExplode;
+    int bombsSize = 0;
     for (int r = 0; r < 8; ++r) {
         for (int c = 0; c < 8; ++c) {
             if (board.matrix[r][c].type == BOMB) {
@@ -711,22 +756,22 @@ bool tickBombs(BejeweledBoard& board) {
                     board.matrix[r][c].bombCounter--;
                 }
                 if (board.matrix[r][c].bombCounter == 0) {
-                    bombsToExplode.push_back({r, c});
+                    bombsToExplode[bombsSize++] = Coord{static_cast<uint8_t>(r), static_cast<uint8_t>(c)};
                 }
             }
         }
     }
 
-    if (!bombsToExplode.empty()) {
-        for (auto [br, bc] : bombsToExplode) {
-            if (board.matrix[br][bc].type == BOMB) {
-                triggerBombExplosion(board, br, bc);
+    if (bombsSize > 0) {
+        for (int i = 0; i < bombsSize; ++i) {
+            Coord bomb = bombsToExplode[i];
+            if (board.matrix[bomb.r][bomb.c].type == BOMB) {
+                triggerBombExplosion(board, bomb.r, bomb.c);
             }
         }
         applyGravity(board);
         resolveBoardStates(board);
     }
-    return true;
 }
 
 struct CandidateMove {
@@ -736,7 +781,7 @@ struct CandidateMove {
 
 bool debugSolve = false;
 
-bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath, std::unordered_map<std::string, int>& visitedStates, int maxDepth) {
+bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath, BoardStateMap& visitedStates, int maxDepth) {
     // Kiểm tra timeout trước tiên
     if (std::chrono::steady_clock::now() >= g_solveDeadline) {
         return false;
@@ -747,14 +792,13 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
     }
 
     solutionPath.reserve(maxDepth);
-    visitedStates.reserve(200000);
 
-    std::string boardKey = serializeBoard(board);
     int currentDepth = static_cast<int>(solutionPath.size());
     if (currentDepth >= maxDepth) {
         return false;
     }
     
+    BoardKey boardKey = makeBoardKey(board);
     auto it = visitedStates.find(boardKey);
     if (it != visitedStates.end() && it->second <= currentDepth) {
         if (debugSolve) {
@@ -762,7 +806,7 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
             for (const auto& m : solutionPath) {
                 std::cout << "(" << m.r1 << "," << m.c1 << "->" << m.r2 << "," << m.c2 << ") ";
             }
-            std::cout << "\n  -> Pruned! (Visited before at depth " << visitedStates[boardKey] << ")" << std::endl;
+            std::cout << "\n  -> Pruned! (Visited before at depth " << it->second << ")" << std::endl;
             std::cout << "Pruned board state:" << std::endl;
             printBoard(board);
         }
@@ -778,17 +822,23 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
         std::cout << std::endl;
     }
 
-    std::vector<CandidateMove> candidates;
-    candidates.reserve(128);
+    std::array<CandidateMove, 128> candidates;
+    int candidateCount = 0;
+
+    int oldRocks = 0;
+    int oldBombs = 0;
+    for (int tr = 0; tr < 8; ++tr) {
+        for (int tc = 0; tc < 8; ++tc) {
+            if (board.matrix[tr][tc].type == ROCK) ++oldRocks;
+            if (board.matrix[tr][tc].type == BOMB) ++oldBombs;
+        }
+    }
 
     for (int r = 0; r < 8; ++r) {
         for (int c = 0; c < 8; ++c) {
-            int nextRows[] = {r, r + 1};
-            int nextCols[] = {c + 1, c};
-
             for (int i = 0; i < 2; ++i) {
-                int nr = nextRows[i];
-                int nc = nextCols[i];
+                int nr = r + kSwapDR[i];
+                int nc = c + kSwapDC[i];
 
                 if (nr < 8 && nc < 8) {
                     if (isValidSwap(board, r, c, nr, nc)) {
@@ -798,15 +848,6 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
                         bool isHC2 = (tempBoard.matrix[nr][nc].type == NORMAL && tempBoard.matrix[nr][nc].isPowered == 0x02);
 
                         std::swap(tempBoard.matrix[r][c], tempBoard.matrix[nr][nc]);
-                        
-                        // Đếm số lượng Đá và Bom trước khi giải phóng
-                        int oldRocks = 0, oldBombs = 0;
-                        for (int tr = 0; tr < 8; ++tr) {
-                            for (int tc = 0; tc < 8; ++tc) {
-                                if (board.matrix[tr][tc].type == ROCK) oldRocks++;
-                                if (board.matrix[tr][tc].type == BOMB) oldBombs++;
-                            }
-                        }
 
                         if (isHC1) {
                             triggerHypercube(tempBoard, nr, nc, r, c);
@@ -828,7 +869,6 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
 
                         int rocksDestroyed = oldRocks - newRocks;
                         int bombsDestroyed = oldBombs - newBombs;
-
                         int emptyCount = 0;
                         for (int tr = 0; tr < 8; ++tr) {
                             for (int tc = 0; tc < 8; ++tc) {
@@ -838,11 +878,13 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
 
                         // Heuristic: Phá đá trước (x1000), sau đó phá bom (x500), sau cùng là tăng tối đa ô trống
                         // Đảm bảo tọa độ đầu (r1, c1) luôn luôn chỉ vào một viên ngọc thực tế (NORMAL hoặc BOMB), chứ không ô trống/đá/v.v., tránh sập game khi bấm Hint
+                        const Gem& gemA = board.matrix[r][c];
+                        const Gem& gemB = board.matrix[nr][nc];
                         Move m;
                         
                         // Xác định ô nào là viên ngọc thực tế (NORMAL hoặc BOMB)
-                        bool isRGemRealGem = (board.matrix[r][c].type == NORMAL || board.matrix[r][c].type == BOMB);
-                        bool isNRGemRealGem = (board.matrix[nr][nc].type == NORMAL || board.matrix[nr][nc].type == BOMB);
+                        bool isRGemRealGem = isRealGem(gemA);
+                        bool isNRGemRealGem = isRealGem(gemB);
                         
                         // Luôn đặt viên ngọc thực tế vào vị trí (r1, c1)
                         if (isRGemRealGem) {
@@ -855,19 +897,23 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
                         }
                         
                         int priority = rocksDestroyed * 1000 + bombsDestroyed * 500 + emptyCount;
-                        candidates.push_back({m, priority});
+                        if (candidateCount < (int)candidates.size()) {
+                            candidates[candidateCount++] = {m, priority};
+                        }
                     }
                 }
             }
         }
     }
 
-    // Sắp xếp các ứng viên nước đi theo thứ tự ưu tiên giảm dần
-    std::sort(candidates.begin(), candidates.end(), [](const CandidateMove& a, const CandidateMove& b) {
-        return a.priority > b.priority;
-    });
+    if (candidateCount > 1) {
+        std::sort(candidates.begin(), candidates.begin() + candidateCount, [](const CandidateMove& a, const CandidateMove& b) {
+            return a.priority > b.priority;
+        });
+    }
 
-    for (const auto& cand : candidates) {
+    for (int i = 0; i < candidateCount; ++i) {
+        const CandidateMove& cand = candidates[i];
         BejeweledBoard backupBoard = board;
 
         bool isHC1 = (board.matrix[cand.m.r1][cand.m.c1].type == NORMAL && board.matrix[cand.m.r1][cand.m.c1].isPowered == 0x02);
@@ -885,14 +931,12 @@ bool solvePuzzleOptimized(BejeweledBoard& board, std::vector<Move>& solutionPath
             resolveBoardStates(board);
         }
 
-        bool bombsOk = tickBombs(board);
-        if (bombsOk) {
-            solutionPath.push_back(cand.m);
-            if (solvePuzzleOptimized(board, solutionPath, visitedStates, maxDepth)) {
-                return true;
-            }
-            solutionPath.pop_back();
+        tickBombs(board);
+        solutionPath.push_back(cand.m);
+        if (solvePuzzleOptimized(board, solutionPath, visitedStates, maxDepth)) {
+            return true;
         }
+        solutionPath.pop_back();
 
         board = backupBoard;
     }
@@ -904,24 +948,27 @@ bool solvePuzzle(BejeweledBoard& board, std::vector<Move>& solutionPath) {
     // Đặt deadline: tăng lên 120 giây cho mỗi màn để tránh timeout quá sớm trên các bài khó
     g_solveDeadline = std::chrono::steady_clock::now() + std::chrono::seconds(120);
 
-    // Thử giải bằng IDDFS với strict slides (độ sâu từ 1 đến 20)
+    BoardStateMap visitedStates;
+    visitedStates.reserve(200000);
+
+    constexpr int kMaxIDDFSDepth = 30;
+
+    // Thử giải bằng IDDFS với strict slides (độ sâu từ 1 đến kMaxIDDFSDepth)
     allowGeneralSlides = false;
-    for (int limit = 1; limit <= 20; ++limit) {
+    for (int limit = 1; limit <= kMaxIDDFSDepth; ++limit) {
         if (std::chrono::steady_clock::now() >= g_solveDeadline) break;
-        std::unordered_map<std::string, int> visitedStates;
-        visitedStates.reserve(200000);
+        visitedStates.clear();
         solutionPath.clear();
         if (solvePuzzleOptimized(board, solutionPath, visitedStates, limit)) {
             return true;
         }
     }
 
-    // Nếu không giải được, thử giải bằng IDDFS với general slides (độ sâu từ 1 đến 20)
+    // Nếu không giải được, thử giải bằng IDDFS với general slides (độ sâu từ 1 đến kMaxIDDFSDepth)
     allowGeneralSlides = true;
-    for (int limit = 1; limit <= 20; ++limit) {
+    for (int limit = 1; limit <= kMaxIDDFSDepth; ++limit) {
         if (std::chrono::steady_clock::now() >= g_solveDeadline) break;
-        std::unordered_map<std::string, int> visitedStates;
-        visitedStates.reserve(200000);
+        visitedStates.clear();
         solutionPath.clear();
         if (solvePuzzleOptimized(board, solutionPath, visitedStates, limit)) {
             return true;
@@ -936,20 +983,23 @@ uint32_t calculateFileCRC32(const std::string& filepath) {
     if (!file.is_open()) {
         return 0; // Trả về 0 nếu không mở được file
     }
-    
-    // Đọc toàn bộ nội dung file
-    std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-    
-    // Tính toán CRC32
+
+    constexpr size_t kBufferSize = 4096;
+    std::array<char, kBufferSize> buffer;
     uint32_t crc = 0xFFFFFFFFU;
-    for (char c : buffer) {
-        uint8_t byte = static_cast<uint8_t>(c);
-        crc ^= byte;
-        for (int j = 0; j < 8; j++) {
-            if (crc & 1) {
-                crc = (crc >> 1) ^ 0xEDB88320U;
-            } else {
-                crc >>= 1;
+
+    while (file.good()) {
+        file.read(buffer.data(), static_cast<std::streamsize>(buffer.size()));
+        std::streamsize bytesRead = file.gcount();
+        for (std::streamsize i = 0; i < bytesRead; ++i) {
+            uint8_t byte = static_cast<uint8_t>(buffer[i]);
+            crc ^= byte;
+            for (int j = 0; j < 8; j++) {
+                if (crc & 1) {
+                    crc = (crc >> 1) ^ 0xEDB88320U;
+                } else {
+                    crc >>= 1;
+                }
             }
         }
     }
@@ -976,16 +1026,17 @@ bool exportSOLFile(const std::string& filename, const std::vector<Move>& solutio
         bpzFilename = bpzFilename.substr(0, dotPos) + ".bpz";
     }
 
-    // Tính toán CRC32 thực tế của file .bpz để làm Puzzle ID
-    uint32_t puzzleID = calculateFileCRC32(bpzFilename);
+    // Lấy tên file .bpz chỉ gồm tên cơ bản
+    std::string bpzNameOnly = bpzFilename;
+    size_t slashPos = bpzNameOnly.find_last_of("/\\");
+    if (slashPos != std::string::npos) {
+        bpzNameOnly = bpzNameOnly.substr(slashPos + 1);
+    }
+
+    uint32_t puzzleID = getOfficialPuzzleID(bpzNameOnly);
     if (puzzleID == 0) {
-        // Fallback về ID chính thức nếu không tính được CRC32 trực tiếp
-        std::string bpzNameOnly = bpzFilename;
-        size_t slashPos = bpzNameOnly.find_last_of("/\\");
-        if (slashPos != std::string::npos) {
-            bpzNameOnly = bpzNameOnly.substr(slashPos + 1);
-        }
-        puzzleID = getOfficialPuzzleID(bpzNameOnly);
+        // Nếu không phải puzzle chuẩn, dùng CRC32 của file .bpz
+        puzzleID = calculateFileCRC32(bpzFilename);
     }
     file.write(reinterpret_cast<char*>(&puzzleID), 4);
 
@@ -1032,10 +1083,9 @@ bool exportSOLFile(const std::string& filename, const std::vector<Move>& solutio
             direction = 0x03; // Dưới (Down)
         }
 
-        // Index = r1 * 8 + c1 + 1 (1-based), với giá trị 64 (ô [7][7]) được mã hóa là 0 (do 6-bit max = 63, nên 64 % 64 = 0).
-        uint8_t rawIndex = static_cast<uint8_t>(currentMove.r1 * 8 + currentMove.c1); // 0-based: 0..63
-        // Chuyển sang 1-based bằng cách +1, rồi & 0x3F để giữ trong 6 bit (64 & 63 = 0)
-        uint8_t gemIndex = rawIndex & 0x3F;  // 0-based: game doc truc tiep 0..63
+        // Index = r1 * 8 + c1 + 1 (1-based), với giá trị 64 (ô [7][7]) được mã hóa là 0
+        uint8_t rawIndex = static_cast<uint8_t>(currentMove.r1 * 8 + currentMove.c1 + 1); // 1-based: 1..64
+        uint8_t gemIndex = rawIndex & 0x3F;  // 6-bit index: 1..63, 64 -> 0
 
         // Byte kết hợp: 2 bit đầu là hướng, 6 bit sau là tọa độ ô cờ
         uint8_t gemIndexAndDirection = (direction << 6) | gemIndex;

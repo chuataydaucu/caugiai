@@ -1041,22 +1041,26 @@ bool exportSOLFile(const std::string& filename, const std::vector<Move>& solutio
     file.write(reinterpret_cast<char*>(&puzzleID), 4);
 
     uint32_t numStates = static_cast<uint32_t>(solutionPath.size());
-    uint16_t startState = static_cast<uint16_t>(numStates);
+    uint16_t startState = 0;
     uint16_t totalStates = static_cast<uint16_t>(numStates + 1);
 
     file.write(reinterpret_cast<char*>(&startState), 2);
     file.write(reinterpret_cast<char*>(&totalStates), 2);
 
     // 2. GHI CÁC KHỐI TRẠNG THÁI (State Blocks)
-    // - Trạng thái 0: Trạng thái kết thúc sạch bảng (0 gợi ý)
-    uint8_t stateZeroHints = 0x00;
-    file.write(reinterpret_cast<char*>(&stateZeroHints), 1);
+    // - Trạng thái 0: trạng thái bắt đầu của màn chơi
+    // - Trạng thái cuối cùng: trạng thái kết thúc sạch bảng (0 gợi ý)
+    for (uint32_t j = 0; j <= numStates; ++j) {
+        if (j == numStates) {
+            uint8_t numHints = 0x00;
+            file.write(reinterpret_cast<char*>(&numHints), 1);
+            break;
+        }
 
-    for (uint32_t j = 1; j <= numStates; ++j) {
         uint8_t numHints = 0x01;
         file.write(reinterpret_cast<char*>(&numHints), 1);
 
-        const Move& currentMove = solutionPath[numStates - j];
+        const Move& currentMove = solutionPath[j];
         
         // VALIDATION: Kiểm tra tọa độ (r1, c1) có hợp lệ không
         if (currentMove.r1 < 0 || currentMove.r1 >= 8 || currentMove.c1 < 0 || currentMove.c1 >= 8) {
@@ -1083,15 +1087,14 @@ bool exportSOLFile(const std::string& filename, const std::vector<Move>& solutio
             direction = 0x03; // Dưới (Down)
         }
 
-        // Index = r1 * 8 + c1 + 1 (1-based), với giá trị 64 (ô [7][7]) được mã hóa là 0
-        uint8_t rawIndex = static_cast<uint8_t>(currentMove.r1 * 8 + currentMove.c1 + 1); // 1-based: 1..64
-        uint8_t gemIndex = rawIndex & 0x3F;  // 6-bit index: 1..63, 64 -> 0
+        // Index = r1 * 8 + c1 (0-based, 0..63)
+        uint8_t gemIndex = static_cast<uint8_t>(currentMove.r1 * 8 + currentMove.c1); // 0..63
 
         // Byte kết hợp: 2 bit đầu là hướng, 6 bit sau là tọa độ ô cờ
-        uint8_t gemIndexAndDirection = (direction << 6) | gemIndex;
+        uint8_t gemIndexAndDirection = static_cast<uint8_t>((direction << 6) | gemIndex);
         file.write(reinterpret_cast<char*>(&gemIndexAndDirection), 1);
 
-        uint8_t gotoState = static_cast<uint8_t>(j - 1);
+        uint8_t gotoState = static_cast<uint8_t>(j + 1);
         file.write(reinterpret_cast<char*>(&gotoState), 1);
 
         // Padding: 2 byte 0x00 0x00
